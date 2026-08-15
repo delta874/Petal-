@@ -31,7 +31,7 @@ const story = [
 
         choices: [
             {
-                text: "Enter the academy",
+                text: "▶ Enter the academy",
                 affection: 0,
                 friendship: 0,
                 next: 1
@@ -49,7 +49,7 @@ const story = [
 
         choices: [
             {
-                text: "Walk toward the courtyard",
+                text: "▶ Walk toward the courtyard",
                 affection: 0,
                 friendship: 0,
                 next: 2
@@ -67,14 +67,14 @@ const story = [
 
         choices: [
             {
-                text: "Help pick up the books",
+                text: "💗 Help pick up the books",
                 affection: 5,
                 friendship: 5,
                 next: 3
             },
 
             {
-                text: "Apologize quickly",
+                text: "💬 Apologize quickly",
                 affection: 2,
                 friendship: 2,
                 next: 4
@@ -85,7 +85,6 @@ const story = [
 
     {
         name: "Aster",
-
         text:
         "Ah! I'm so sorry! I wasn't looking where I was going!",
 
@@ -93,14 +92,14 @@ const story = [
 
         choices: [
             {
-                text: "It's okay.",
+                text: "🌸 It's okay.",
                 affection: 5,
                 friendship: 5,
                 next: 5
             },
 
             {
-                text: "You seem nervous.",
+                text: "💗 You seem nervous.",
                 affection: 8,
                 friendship: 3,
                 next: 5
@@ -111,7 +110,6 @@ const story = [
 
     {
         name: "Aster",
-
         text:
         "No, no, it's my fault. I get distracted way too easily.",
 
@@ -119,7 +117,7 @@ const story = [
 
         choices: [
             {
-                text: "Don't worry about it.",
+                text: "💗 Don't worry about it.",
                 affection: 5,
                 friendship: 5,
                 next: 5
@@ -130,7 +128,6 @@ const story = [
 
     {
         name: "Aster",
-
         text:
         "Thanks for helping me. Most people would've just walked by.",
 
@@ -138,14 +135,14 @@ const story = [
 
         choices: [
             {
-                text: "I couldn't leave you like that.",
+                text: "💖 I couldn't leave you like that.",
                 affection: 10,
                 friendship: 5,
                 next: 6
             },
 
             {
-                text: "Anyone would've helped.",
+                text: "🤝 Anyone would've helped.",
                 affection: 5,
                 friendship: 8,
                 next: 6
@@ -156,7 +153,6 @@ const story = [
 
     {
         name: "Aster",
-
         text:
         "I'm Aster. Maybe we'll see each other around campus?",
 
@@ -164,14 +160,14 @@ const story = [
 
         choices: [
             {
-                text: "I'd like that.",
+                text: "💖 I'd like that.",
                 affection: 10,
                 friendship: 5,
                 next: 7
             },
 
             {
-                text: "See you around.",
+                text: "🌸 See you around.",
                 affection: 5,
                 friendship: 8,
                 next: 7
@@ -182,7 +178,6 @@ const story = [
 
     {
         name: "",
-
         text:
         "The bell rings across campus. Your first day at Paper Lantern Academy has officially begun.",
 
@@ -190,7 +185,7 @@ const story = [
 
         choices: [
             {
-                text: "Continue",
+                text: "▶ Continue",
                 affection: 0,
                 friendship: 0,
                 next: 8
@@ -201,13 +196,19 @@ const story = [
 
     {
         name: "",
-
         text:
         "🌸 End of Demo 🌸",
 
         location: "Academy",
 
-        choices: []
+        choices: [
+            {
+                text: "↻ Restart Demo",
+                affection: 0,
+                friendship: 0,
+                next: 0
+            }
+        ]
     }
 
 ];
@@ -256,14 +257,12 @@ function typeText(text) {
 
     typing = true;
 
-
     typingTimer = setInterval(() => {
 
         dialogue.textContent +=
             text.charAt(i);
 
         i++;
-
 
         if (i >= text.length) {
 
@@ -286,17 +285,11 @@ function renderScene() {
         story[current];
 
 
-    /* =============================
-       LOCATION
-    ============================= */
-
     location =
         scene.location || "Academy";
 
 
-    /* =============================
-       CHARACTER NAME
-    ============================= */
+    /* CHARACTER NAME */
 
     const nameBox =
         document.getElementById("name");
@@ -317,9 +310,7 @@ function renderScene() {
     }
 
 
-    /* =============================
-       CHAPTER TEXT
-    ============================= */
+    /* CHAPTER */
 
     const chapter =
         document.getElementById("chapter-text");
@@ -332,16 +323,12 @@ function renderScene() {
     }
 
 
-    /* =============================
-       DIALOGUE
-    ============================= */
+    /* DIALOGUE */
 
     typeText(scene.text);
 
 
-    /* =============================
-       CHOICES
-    ============================= */
+    /* CHOICES */
 
     const choices =
         document.getElementById("choices");
@@ -361,20 +348,12 @@ function renderScene() {
 
         button.onclick = () => {
 
-            /* =====================
-               ADD RELATIONSHIP
-            ===================== */
-
             affection +=
                 choice.affection || 0;
 
             friendship +=
                 choice.friendship || 0;
 
-
-            /* =====================
-               MOVE STORY
-            ===================== */
 
             current =
                 choice.next;
@@ -383,7 +362,6 @@ function renderScene() {
             updateHUD();
 
             renderScene();
-
         };
 
 
@@ -397,7 +375,7 @@ function renderScene() {
 
 
 /* =================================
-   FALLING CHERRY BLOSSOMS
+   FALLING PETALS
 ================================= */
 
 function createPetal() {
@@ -419,7 +397,7 @@ function createPetal() {
 
 
     petal.style.fontSize =
-        (14 + Math.random() * 14) + "px";
+        (18 + Math.random() * 16) + "px";
 
 
     petal.style.animationDuration =
