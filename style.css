@@ -80,20 +80,21 @@ body {
 
     z-index: 100;
 
-    min-width: 310px;
+    min-width: 350px;
 
-    padding: 14px 18px;
+    padding: 16px 20px;
 
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
 
     backdrop-filter: blur(10px);
 
-    border: 2px solid #ffb6d9;
+    border: 3px solid #ffb6d9;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     box-shadow:
-        0 6px 18px rgba(180, 80, 130, 0.12);
+        0 7px 20px
+        rgba(180, 80, 130, 0.14);
 }
 
 .hud-row {
@@ -103,13 +104,13 @@ body {
 
     justify-content: space-between;
 
-    gap: 20px;
+    gap: 24px;
 
-    margin: 6px 0;
+    margin: 7px 0;
 
     color: #c94f8d;
 
-    font-size: 14px;
+    font-size: 17px;
 
     font-weight: bold;
 
@@ -143,25 +144,27 @@ body {
 
     color: white;
 
-    font-size: 42px;
+    font-size: 48px;
 
     letter-spacing: 1px;
 
     text-shadow:
-        0 3px 10px rgba(160, 70, 110, 0.25);
+        0 3px 12px
+        rgba(160, 70, 110, 0.28);
 }
 
 #chapter-text {
-    margin: 6px 0 0;
+    margin: 8px 0 0;
 
     color: white;
 
-    font-size: 16px;
+    font-size: 19px;
 
     font-weight: bold;
 
     text-shadow:
-        0 2px 7px rgba(160, 70, 110, 0.2);
+        0 2px 8px
+        rgba(160, 70, 110, 0.25);
 }
 
 
@@ -214,21 +217,23 @@ body {
 
     width: 94%;
 
-    min-height: 260px;
+    min-height: 285px;
 
     z-index: 50;
 
-    padding: 24px 30px;
+    padding: 25px 32px;
 
-    background: rgba(255, 255, 255, 0.95);
+    background:
+        rgba(255, 255, 255, 0.96);
 
-    border: 3px solid #ffb0d2;
+    border:
+        3px solid #ffb0d2;
 
-    border-radius: 25px;
+    border-radius: 26px;
 
     box-shadow:
         0 8px 30px
-        rgba(150, 70, 110, 0.15);
+        rgba(150, 70, 110, 0.16);
 
     backdrop-filter: blur(12px);
 }
@@ -241,7 +246,7 @@ body {
 #name {
     display: inline-block;
 
-    padding: 8px 22px;
+    padding: 9px 24px;
 
     margin-bottom: 10px;
 
@@ -254,14 +259,14 @@ body {
 
     color: white;
 
-    font-size: 18px;
+    font-size: 21px;
 
     font-weight: bold;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     box-shadow:
-        0 3px 8px
+        0 3px 9px
         rgba(220, 80, 140, 0.2);
 }
 
@@ -271,15 +276,15 @@ body {
 ================================= */
 
 #dialogue {
-    margin: 5px 0 18px;
+    margin: 6px 0 20px;
 
     color: #633b50;
 
-    font-size: 19px;
+    font-size: 22px;
 
     line-height: 1.55;
 
-    min-height: 60px;
+    min-height: 70px;
 }
 
 
@@ -292,29 +297,43 @@ body {
 
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: 14px;
 
-    min-height: 48px;
+    min-height: 55px;
+
+    align-items: center;
 }
 
 button {
     display: block;
 
-    padding: 11px 22px;
+    padding: 13px 25px;
 
-    background: white;
+    min-height: 48px;
 
-    border: 2px solid #ff9ecb;
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fff3f8
+        );
 
-    border-radius: 24px;
+    border:
+        3px solid #ff9ecb;
+
+    border-radius: 25px;
 
     color: #c94f8d;
 
-    font-size: 15px;
+    font-size: 17px;
 
     font-weight: bold;
 
     cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        rgba(220, 80, 140, 0.12);
 
     transition:
         transform 0.15s,
@@ -326,12 +345,12 @@ button:hover {
     background: #ffe3ef;
 
     transform:
-        translateY(-2px)
-        scale(1.03);
+        translateY(-3px)
+        scale(1.04);
 
     box-shadow:
-        0 5px 12px
-        rgba(220, 80, 140, 0.18);
+        0 7px 16px
+        rgba(220, 80, 140, 0.2);
 }
 
 button:active {
@@ -352,7 +371,7 @@ button:active {
 
     z-index: 10;
 
-    font-size: 20px;
+    font-size: 24px;
 
     pointer-events: none;
 
@@ -379,7 +398,7 @@ button:active {
     100% {
         transform:
             translateY(
-                calc(100vh - 280px)
+                calc(100vh - 300px)
             )
             rotate(360deg);
 
@@ -402,13 +421,13 @@ button:active {
 
         width: calc(100% - 24px);
 
-        padding: 10px 12px;
+        padding: 11px 14px;
     }
 
     .hud-row {
         gap: 8px;
 
-        font-size: 12px;
+        font-size: 14px;
     }
 
     #title-card {
@@ -418,11 +437,11 @@ button:active {
     }
 
     #title-card h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     #chapter-text {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     #textbox {
@@ -431,29 +450,31 @@ button:active {
 
         width: 96%;
 
-        min-height: 235px;
+        min-height: 250px;
 
         padding: 18px 20px;
 
-        border-radius: 20px;
+        border-radius: 21px;
     }
 
     #dialogue {
-        font-size: 16px;
+        font-size: 18px;
 
         line-height: 1.45;
     }
 
     #name {
-        font-size: 15px;
+        font-size: 17px;
 
-        padding: 6px 17px;
+        padding: 7px 18px;
     }
 
     button {
-        padding: 9px 16px;
+        padding: 10px 18px;
 
-        font-size: 13px;
+        min-height: 44px;
+
+        font-size: 15px;
     }
 }
 
@@ -465,13 +486,13 @@ button:active {
 @media (max-height: 650px) {
 
     #textbox {
-        min-height: 210px;
+        min-height: 220px;
 
         padding: 15px 20px;
     }
 
     #dialogue {
-        font-size: 15px;
+        font-size: 17px;
 
         min-height: 45px;
     }
@@ -481,6 +502,7 @@ button:active {
     }
 
     #title-card h1 {
-        font-size: 25px;
+        font-size: 30px;
     }
 }
+    
