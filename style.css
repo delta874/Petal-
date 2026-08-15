@@ -1,459 +1,5474 @@
+/* ========================================= */
+/* ALASHIA ACADEMY                          */
+/* CSS PART 1 - FOUNDATION                  */
+/* ========================================= */
+
+
+/* ========================================= */
+/* BASIC RESET                              */
+/* ========================================= */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html,
-body {
-    margin: 0;
+
+/* ========================================= */
+/* HTML / BODY                              */
+/* ========================================= */
+
+html {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0d14;
 }
+
 
 body {
-    background: linear-gradient(
-        180deg,
-        #fff5fb 0%,
-        #ffe7f2 45%,
-        #ffd4e7 100%
-    );
+    width: 100%;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #20263a 0%,
+            #0b0d14 55%,
+            #05060a 100%
+        );
+
+    color: #f2f4ff;
+
+    overflow-x: hidden;
 }
 
 
-/* ================================
-   GAME
-================================ */
+/* ========================================= */
+/* GAME ROOT                                */
+/* ========================================= */
 
 #game {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
     overflow: hidden;
 }
 
 
-/* ================================
-   BACKGROUND GLOW
-================================ */
+/* ========================================= */
+/* GENERAL SECTIONS                         */
+/* ========================================= */
 
-#sun-glow {
-    position: absolute;
-    top: -120px;
-    right: -100px;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,0.6);
-
-    filter: blur(55px);
-
-    pointer-events: none;
-
-    z-index: 1;
+section,
+header,
+nav,
+div {
+    position: relative;
 }
 
 
-/* ================================
-   HUD
-================================ */
+/* ========================================= */
+/* TEXT                                     */
+/* ========================================= */
 
-#hud {
-    position: absolute;
+h1,
+h2,
+h3,
+p {
+    line-height: 1.4;
+}
 
-    top: 18px;
-    left: 18px;
 
-    z-index: 100;
+h1 {
+    font-size: 2rem;
+}
 
-    min-width: 350px;
 
-    padding: 15px 20px;
+h2 {
+    font-size: 1.5rem;
+}
 
-    background: rgba(255,255,255,0.94);
 
-    border: 3px solid #ffafd2;
+h3 {
+    font-size: 1.15rem;
+}
 
-    border-radius: 22px;
+
+p {
+    font-size: 1rem;
+}
+
+
+/* ========================================= */
+/* GENERAL BUTTON STYLE                     */
+/* ========================================= */
+
+button {
+    font-family: inherit;
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background: #20263a;
+
+    border: 1px solid #3a425c;
+
+    border-radius: 10px;
+
+    padding: 12px 18px;
+
+    font-size: 1rem;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+/* ========================================= */
+/* BUTTON HOVER                            */
+/* ========================================= */
+
+button:hover {
+    background: #2b3450;
+
+    border-color: #68749c;
+
+    transform: translateY(-2px);
 
     box-shadow:
-        0 7px 20px rgba(180,80,130,0.15);
-
-    backdrop-filter: blur(10px);
+        0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-.hud-row {
-    display: flex;
 
-    justify-content: space-between;
+/* ========================================= */
+/* BUTTON ACTIVE                           */
+/* ========================================= */
+
+button:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ========================================= */
+/* DISABLED BUTTON                         */
+/* ========================================= */
+
+button:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ========================================= */
+/* INPUTS                                   */
+/* ========================================= */
+
+input,
+textarea,
+select {
+    font-family: inherit;
+
+    color: #ffffff;
+
+    background: #141827;
+
+    border: 1px solid #3a425c;
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    outline: none;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #7c89b8;
+
+    box-shadow:
+        0 0 0 2px rgba(124, 137, 184, 0.2);
+}
+
+
+/* ========================================= */
+/* GAME DISPLAY                             */
+/* ========================================= */
+
+#main-game {
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
     align-items: center;
 
+    padding: 20px;
+
     gap: 20px;
-
-    margin: 7px 0;
-
-    color: #c94f8d;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    white-space: nowrap;
 }
 
 
-/* ================================
-   TITLE
-================================ */
+/* ========================================= */
+/* LOCATION HEADER                          */
+/* ========================================= */
 
-#title-card {
-    position: absolute;
+#location-header {
+    width: min(900px, 100%);
 
-    top: 35px;
-    left: 50%;
+    padding: 18px;
 
-    transform: translateX(-50%);
+    background:
+        rgba(20, 24, 39, 0.85);
 
-    z-index: 20;
+    border: 1px solid #323950;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(8px);
+}
+
+
+#current-location {
+    margin-bottom: 5px;
+
+    font-size: 1.7rem;
+}
+
+
+#location-description {
+    color: #aeb6d0;
+
+    font-size: 0.95rem;
+}
+
+
+/* ========================================= */
+/* GAME DISPLAY AREA                        */
+/* ========================================= */
+
+#game-display {
+    width: min(900px, 100%);
+
+    min-height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(27, 32, 52, 0.95),
+            rgba(13, 16, 27, 0.95)
+        );
+
+    border: 1px solid #353d58;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ========================================= */
+/* GAME MESSAGE                             */
+/* ========================================= */
+
+#game-message {
+    width: 100%;
+
+    max-width: 700px;
 
     text-align: center;
 
-    pointer-events: none;
-}
-
-#title-card h1 {
-    margin: 0;
-
-    color: white;
-
-    font-size: 46px;
-
-    text-shadow:
-        0 3px 12px rgba(160,70,110,0.3);
-}
-
-#chapter-text {
-    margin: 7px 0;
-
-    color: white;
-
-    font-size: 18px;
-
-    font-weight: bold;
+    color: #dce1f5;
 }
 
 
-/* ================================
-   CHARACTER AREA
-================================ */
+#main-message {
+    font-size: 1.2rem;
 
-#character-area {
-    position: absolute;
+    line-height: 1.7;
+}
 
-    top: 18%;
-    left: 0;
 
+/* ========================================= */
+/* ACTION AREA                              */
+/* ========================================= */
+
+#action-area {
+    width: min(900px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+}
+
+
+/* ========================================= */
+/* ACTION BUTTONS                           */
+/* ========================================= */
+
+#action-area button {
+    min-height: 58px;
+
+    font-size: 0.95rem;
+}
+
+
+/* ========================================= */
+/* BOTTOM MENU                              */
+/* ========================================= */
+
+#bottom-menu {
     width: 100%;
-    height: 45%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 8px;
+
+    padding: 12px;
+
+    background:
+        rgba(8, 10, 17, 0.95);
+
+    border-top:
+        1px solid #30374d;
+
+    box-shadow:
+        0 -8px 25px rgba(0, 0, 0, 0.25);
+
+    position: sticky;
+
+    bottom: 0;
+
+    z-index: 50;
+}
+
+
+/* ========================================= */
+/* BOTTOM MENU BUTTONS                     */
+/* ========================================= */
+
+#bottom-menu button {
+    min-height: 55px;
+
+    padding: 8px;
+
+    font-size: 0.9rem;
+
+    background:
+        #151a2a;
+}
+
+
+/* ========================================= */
+/* GENERAL PANEL                           */
+/* ========================================= */
+
+.game-panel {
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: min(900px, 92vw);
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    padding: 22px;
+
+    background:
+        rgba(13, 16, 27, 0.98);
+
+    border:
+        1px solid #3b4563;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65);
+
+    z-index: 100;
+
+    display: none;
+}
+
+
+/* ========================================= */
+/* PANEL HEADER                            */
+/* ========================================= */
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid #30374d;
+}
+
+
+/* ========================================= */
+/* PANEL CLOSE BUTTON                      */
+/* ========================================= */
+
+.panel-close {
+    width: 40px;
+
+    height: 40px;
+
+    padding: 0;
 
     display: flex;
 
+    align-items: center;
+
     justify-content: center;
-    align-items: flex-end;
 
-    z-index: 5;
+    font-size: 1.2rem;
 
-    pointer-events: none;
-}
-
-#character {
-    max-width: 80%;
-    max-height: 100%;
-
-    object-fit: contain;
+    border-radius: 50%;
 }
 
 
-/* ================================
-   DIALOGUE BOX
-================================ */
+/* ========================================= */
+/* OVERLAY                                 */
+/* ========================================= */
 
-#textbox {
-    position: absolute;
+.overlay {
+    position: fixed;
 
-    left: 3%;
-    bottom: 2%;
+    inset: 0;
 
-    width: 94%;
+    width: 100%;
+    height: 100%;
 
-    height: 310px;
+    display: none;
 
-    z-index: 50;
+    align-items: center;
 
-    padding: 22px 30px;
+    justify-content: center;
 
-    background: rgba(255,255,255,0.97);
+    padding: 20px;
 
-    border: 3px solid #ffafd2;
+    background:
+        rgba(0, 0, 0, 0.72);
 
-    border-radius: 26px;
+    backdrop-filter:
+        blur(6px);
+
+    z-index: 500;
+}
+
+
+/* ========================================= */
+/* OVERLAY DIALOG                          */
+/* ========================================= */
+
+.dialog-box {
+    width: min(500px, 92vw);
+
+    padding: 28px;
+
+    text-align: center;
+
+    background:
+        #121624;
+
+    border:
+        1px solid #414b6c;
+
+    border-radius: 18px;
 
     box-shadow:
-        0 8px 30px rgba(150,70,110,0.17);
-
-    backdrop-filter: blur(12px);
-
-    overflow: visible;
+        0 25px 70px rgba(0, 0, 0, 0.6);
 }
 
 
-/* ================================
-   NAME
-================================ */
+/* ========================================= */
+/* MOBILE FOUNDATION                       */
+/* ========================================= */
 
-#name {
-    display: inline-block;
+@media (max-width: 700px) {
 
-    padding: 8px 23px;
+    #main-game {
+        padding: 12px;
 
-    margin-bottom: 8px;
+        gap: 12px;
+    }
 
-    background: linear-gradient(
-        135deg,
-        #ff9ecb,
-        #ffb9d8
-    );
 
-    color: white;
+    #game-display {
+        min-height: 180px;
 
-    font-size: 20px;
+        padding: 20px;
+    }
+
+
+    #action-area {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    #bottom-menu {
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        gap: 4px;
+
+        padding: 7px;
+    }
+
+
+    #bottom-menu button {
+        min-height: 50px;
+
+        padding: 5px;
+
+        font-size: 0.72rem;
+    }
+
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+
+    #main-message {
+        font-size: 1rem;
+    }
+
+}
+
+
+/* ========================================= */
+/* VERY SMALL SCREENS                      */
+/* ========================================= */
+
+@media (max-width: 420px) {
+
+    #action-area {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    #action-area button {
+        min-height: 52px;
+
+        padding: 8px;
+
+        font-size: 0.82rem;
+    }
+
+
+    #bottom-menu button {
+        font-size: 0.65rem;
+    }
+
+}
+
+
+/* ========================================= */
+/* SCROLLBAR                               */
+/* ========================================= */
+
+* {
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #414b6c
+        #0d101b;
+}
+
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+*::-webkit-scrollbar-track {
+    background: #0d101b;
+}
+
+
+*::-webkit-scrollbar-thumb {
+    background: #414b6c;
+
+    border-radius: 10px;
+}
+
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #596684;
+}
+
+
+/* ========================================= */
+/* END OF CSS PART 1                      */
+/* ========================================= */
+
+/* ========================================= */
+/* ALASHIA ACADEMY                          */
+/* CSS PART 2 - HUD & QUICK ACCESS          */
+/* ========================================= */
+
+
+/* ========================================= */
+/* TOP BAR                                  */
+/* ========================================= */
+
+#top-bar {
+
+    width: 100%;
+
+    min-height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 14px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18, 22, 38, 0.98),
+            rgba(10, 13, 23, 0.98)
+        );
+
+    border-bottom:
+        1px solid #353d58;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3);
+
+    z-index: 40;
+}
+
+
+/* ========================================= */
+/* GAME TITLE                               */
+/* ========================================= */
+
+#game-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+#game-title h1 {
+
+    font-size: 1.55rem;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+
+}
+
+
+/* ========================================= */
+/* GAME STATUS                              */
+/* ========================================= */
+
+#game-status {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* ========================================= */
+/* STATUS ITEMS                             */
+/* ========================================= */
+
+#day-display,
+#time-display,
+#energy-display {
+
+    min-height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 7px 12px;
+
+    background:
+        rgba(30, 36, 57, 0.9);
+
+    border:
+        1px solid #3a435f;
+
+    border-radius: 9px;
+
+    font-size: 0.9rem;
+
+    white-space: nowrap;
+
+}
+
+
+/* ========================================= */
+/* ENERGY DISPLAY                           */
+/* ========================================= */
+
+#energy-display {
 
     font-weight: bold;
 
-    border-radius: 22px;
 }
 
 
-/* ================================
-   DIALOGUE
-================================ */
+/* ========================================= */
+/* PLAYER INFO                              */
+/* ========================================= */
 
-#dialogue {
-    margin: 5px 0 18px;
+#player-info {
 
-    color: #633b50;
+    position: fixed;
 
-    font-size: 21px;
+    top: 90px;
 
-    line-height: 1.5;
+    left: 18px;
 
-    min-height: 75px;
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 12px;
+
+    background:
+        rgba(13, 16, 27, 0.88);
+
+    border:
+        1px solid #323a55;
+
+    border-radius: 9px;
+
+    font-size: 0.8rem;
+
+    backdrop-filter:
+        blur(8px);
 }
 
 
-/* ================================
-   CHOICE AREA
-================================ */
+#player-name-display {
 
-#choices {
+    color: #ffffff;
+
+}
+
+
+/* ========================================= */
+/* QUICK ACCESS                             */
+/* ========================================= */
+
+#quick-access {
+
+    position: fixed;
+
+    top: 90px;
+
+    right: 18px;
+
+    z-index: 80;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+/* ========================================= */
+/* QUICK ACCESS BUTTONS                    */
+/* ========================================= */
+
+#quick-access button {
+
+    min-width: 48px;
+
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 8px 12px;
+
+    background:
+        rgba(20, 25, 42, 0.94);
+
+    border:
+        1px solid #3a4564;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* ========================================= */
+/* QUICK ACCESS HOVER                      */
+/* ========================================= */
+
+#quick-access button:hover {
+
+    transform:
+        translateX(-3px);
+
+    background:
+        #2a3450;
+
+}
+
+
+/* ========================================= */
+/* QUICK ACCESS ICONS                      */
+/* ========================================= */
+
+#quick-access button:first-letter {
+
+    font-size: 1.1rem;
+
+}
+
+
+/* ========================================= */
+/* NOTIFICATION AREA                       */
+/* ========================================= */
+
+#notification-area {
+
+    position: fixed;
+
+    top: 90px;
+
+    right: 230px;
+
+    z-index: 90;
+
+}
+
+
+/* ========================================= */
+/* NOTIFICATION BUTTON                     */
+/* ========================================= */
+
+#notification-button {
+
+    position: relative;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(20, 25, 42, 0.95);
+
+}
+
+
+/* ========================================= */
+/* NOTIFICATION COUNT                      */
+/* ========================================= */
+
+#notification-count {
+
+    position: absolute;
+
+    top: -4px;
+
+    right: -4px;
+
+    min-width: 19px;
+
+    height: 19px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 2px 5px;
+
+    background:
+        #b52f4b;
+
+    border:
+        2px solid #0d101b;
+
+    border-radius: 50%;
+
+    font-size: 0.65rem;
+
+    font-weight: bold;
+
+}
+
+
+/* ========================================= */
+/* NOTIFICATION LIST                       */
+/* ========================================= */
+
+#notification-list {
+
+    position: absolute;
+
+    top: 52px;
+
+    right: 0;
+
+    width: 260px;
+
+    max-height: 300px;
+
+    overflow-y: auto;
+
+    padding: 12px;
+
+    display: none;
+
+    background:
+        rgba(15, 19, 32, 0.98);
+
+    border:
+        1px solid #3b4563;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5);
+
+}
+
+
+/* ========================================= */
+/* ACTION RESULT                            */
+/* ========================================= */
+
+#action-result {
+
+    width: min(700px, 100%);
+
+    min-height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 12px 18px;
+
+    margin-top: -8px;
+
+    background:
+        rgba(18, 22, 37, 0.88);
+
+    border:
+        1px solid #303951;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+}
+
+
+/* ========================================= */
+/* ACTION RESULT ICON                      */
+/* ========================================= */
+
+#action-result-icon {
+
+    font-size: 1.3rem;
+
+}
+
+
+/* ========================================= */
+/* ACTION RESULT TEXT                      */
+/* ========================================= */
+
+#action-result-text {
+
+    color: #c5cbe0;
+
+    font-size: 0.9rem;
+
+}
+
+
+/* ========================================= */
+/* TOP STATUS GLOW                         */
+/* ========================================= */
+
+#day-display,
+#time-display,
+#energy-display {
+
+    box-shadow:
+        inset 0 0 12px rgba(255, 255, 255, 0.025);
+
+}
+
+
+/* ========================================= */
+/* DESKTOP QUICK ACCESS                    */
+/* ========================================= */
+
+@media (min-width: 1000px) {
+
+    #quick-access button span {
+
+        display: inline;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* TABLET LAYOUT                           */
+/* ========================================= */
+
+@media (max-width: 900px) {
+
+    #top-bar {
+
+        padding:
+            12px 15px;
+
+    }
+
+
+    #game-title h1 {
+
+        font-size: 1.3rem;
+
+    }
+
+
+    #game-status {
+
+        gap: 5px;
+
+    }
+
+
+    #day-display,
+    #time-display,
+    #energy-display {
+
+        padding:
+            6px 9px;
+
+        font-size:
+            0.78rem;
+
+    }
+
+
+    #quick-access {
+
+        right: 10px;
+
+    }
+
+
+    #player-info {
+
+        left: 10px;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* PHONE / SMALL TABLET                   */
+/* ========================================= */
+
+@media (max-width: 700px) {
+
+    #top-bar {
+
+        min-height: 70px;
+
+        align-items: flex-start;
+
+    }
+
+
+    #game-title h1 {
+
+        font-size: 1.1rem;
+
+    }
+
+
+    #game-status {
+
+        justify-content: flex-end;
+
+        max-width: 55%;
+
+    }
+
+
+    #day-display,
+    #time-display,
+    #energy-display {
+
+        min-height: 32px;
+
+        padding:
+            5px 7px;
+
+        font-size:
+            0.7rem;
+
+    }
+
+
+    #player-info {
+
+        top: 76px;
+
+        left: 8px;
+
+        font-size: 0.7rem;
+
+    }
+
+
+    #quick-access {
+
+        top: 76px;
+
+        right: 8px;
+
+        gap: 5px;
+
+    }
+
+
+    #quick-access button {
+
+        min-width: 40px;
+
+        min-height: 38px;
+
+        padding: 6px;
+
+        font-size: 0.8rem;
+
+    }
+
+
+    #quick-access button span {
+
+        display: none;
+
+    }
+
+
+    #notification-area {
+
+        top: 76px;
+
+        right: 65px;
+
+    }
+
+
+    #notification-list {
+
+        right: -5px;
+
+        width: 230px;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* VERY SMALL PHONE                       */
+/* ========================================= */
+
+@media (max-width: 420px) {
+
+    #top-bar {
+
+        min-height: 64px;
+
+        padding:
+            9px;
+
+    }
+
+
+    #game-title h1 {
+
+        font-size: 0.95rem;
+
+    }
+
+
+    #game-status {
+
+        gap: 3px;
+
+    }
+
+
+    #day-display,
+    #time-display,
+    #energy-display {
+
+        min-height: 28px;
+
+        padding:
+            4px 6px;
+
+        font-size:
+            0.62rem;
+
+    }
+
+
+    #quick-access {
+
+        top: 70px;
+
+    }
+
+
+    #quick-access button {
+
+        width: 38px;
+
+        height: 36px;
+
+        min-width: 38px;
+
+        min-height: 36px;
+
+        font-size: 0.85rem;
+
+    }
+
+
+    #player-info {
+
+        top: 70px;
+
+    }
+
+
+    #notification-area {
+
+        top: 70px;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* END OF CSS PART 2                      */
+/* ========================================= */
+
+  /* ========================================= */
+/* ALASHIA ACADEMY                          */
+/* CSS PART 3 - CAMPUS MAP                  */
+/* ========================================= */
+
+
+/* ========================================= */
+/* CAMPUS MAP PANEL                        */
+/* ========================================= */
+
+#campus-map-panel {
+
+    width: min(1000px, 94vw);
+
+    margin: 0 auto;
+
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19, 25, 42, 0.98),
+            rgba(9, 12, 21, 0.98)
+        );
+
+    border:
+        1px solid #3c4766;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+
+}
+
+
+/* ========================================= */
+/* CAMPUS HEADER                           */
+/* ========================================= */
+
+#campus-header {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+#campus-header h2 {
+
+    font-size: 1.8rem;
+
+    margin-bottom: 5px;
+
+}
+
+
+#campus-header p {
+
+    color: #9da7c4;
+
+    font-size: 0.9rem;
+
+}
+
+
+/* ========================================= */
+/* CAMPUS MAP                              */
+/* ========================================= */
+
+#campus-map {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 570px;
+
+    padding: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, 1fr);
+
+    grid-template-rows:
+        repeat(10, 1fr);
+
+    gap: 12px;
+
+    background:
+
+        linear-gradient(
+            rgba(30, 55, 45, 0.4),
+            rgba(18, 38, 31, 0.5)
+        ),
+
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 47px,
+            rgba(255,255,255,0.025) 48px
+        ),
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 47px,
+            rgba(255,255,255,0.025) 48px
+        );
+
+    border:
+        1px solid #3d4c59;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+}
+
+
+/* ========================================= */
+/* CAMPUS PATHS                            */
+/* ========================================= */
+
+#campus-map::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 5%;
+
+    right: 5%;
+
+    height: 70px;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        rgba(130, 120, 95, 0.18);
+
+    border-top:
+        2px solid rgba(180, 170, 140, 0.12);
+
+    border-bottom:
+        2px solid rgba(180, 170, 140, 0.12);
+
+    pointer-events: none;
+
+}
+
+
+#campus-map::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 5%;
+
+    bottom: 5%;
+
+    width: 70px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(130, 120, 95, 0.15);
+
+    border-left:
+        2px solid rgba(180, 170, 140, 0.1);
+
+    border-right:
+        2px solid rgba(180, 170, 140, 0.1);
+
+    pointer-events: none;
+
+}
+
+
+/* ========================================= */
+/* LOCATION BUTTON                         */
+/* ========================================= */
+
+.location-button {
+
+    position: relative;
+
+    z-index: 5;
+
+    min-width: 0;
+
+    min-height: 90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #202943,
+            #151b2d
+        );
+
+    border:
+        1px solid #414d70;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/* ========================================= */
+/* LOCATION HOVER                         */
+/* ========================================= */
+
+.location-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    border-color:
+        #7d8db9;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2b3757,
+            #1a2238
+        );
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.4);
+
+}
+
+
+/* ========================================= */
+/* LOCATION ICON                           */
+/* ========================================= */
+
+.location-icon {
+
+    font-size: 2rem;
+
+    line-height: 1;
+
+}
+
+
+/* ========================================= */
+/* LOCATION NAME                           */
+/* ========================================= */
+
+.location-name {
+
+    font-weight: bold;
+
+    font-size: 0.95rem;
+
+}
+
+
+/* ========================================= */
+/* LOCATION DESCRIPTION                    */
+/* ========================================= */
+
+.location-description {
+
+    color: #9da7c4;
+
+    font-size: 0.68rem;
+
+}
+
+
+/* ========================================= */
+/* COURTYARD POSITION                     */
+/* ========================================= */
+
+.courtyard-location {
+
+    grid-column:
+        5 / 9;
+
+    grid-row:
+        4 / 8;
+
+    min-height: 170px;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(67, 103, 77, 0.45),
+            rgba(28, 47, 38, 0.95)
+        );
+
+}
+
+
+/* ========================================= */
+/* LIBRARY POSITION                        */
+/* ========================================= */
+
+.library-location {
+
+    grid-column:
+        1 / 4;
+
+    grid-row:
+        2 / 5;
+
+}
+
+
+/* ========================================= */
+/* CAFETERIA POSITION                     */
+/* ========================================= */
+
+.cafeteria-location {
+
+    grid-column:
+        9 / 13;
+
+    grid-row:
+        2 / 5;
+
+}
+
+
+/* ========================================= */
+/* ART WING POSITION                      */
+/* ========================================= */
+
+.art-location {
+
+    grid-column:
+        1 / 4;
+
+    grid-row:
+        7 / 10;
+
+}
+
+
+/* ========================================= */
+/* MUSIC HALL POSITION                    */
+/* ========================================= */
+
+.music-location {
+
+    grid-column:
+        9 / 13;
+
+    grid-row:
+        7 / 10;
+
+}
+
+
+/* ========================================= */
+/* SCIENCE LAB POSITION                   */
+/* ========================================= */
+
+.science-location {
+
+    grid-column:
+        5 / 9;
+
+    grid-row:
+        1 / 3;
+
+}
+
+
+/* ========================================= */
+/* DORMS POSITION                          */
+/* ========================================= */
+
+.dorm-location {
+
+    grid-column:
+        5 / 9;
+
+    grid-row:
+        9 / 11;
+
+}
+
+
+/* ========================================= */
+/* SELECTED LOCATION INFO                 */
+/* ========================================= */
+
+#selected-location-info {
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    background:
+        rgba(12, 16, 27, 0.8);
+
+    border:
+        1px solid #343e5a;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+}
+
+
+#selected-location-info h3 {
+
+    font-size: 1.3rem;
+
+    margin-bottom: 5px;
+
+}
+
+
+#selected-location-info p {
+
+    color: #a8b0c8;
+
+    margin-bottom: 14px;
+
+}
+
+
+/* ========================================= */
+/* MAP ACTION BUTTONS                     */
+/* ========================================= */
+
+#explore-location-button,
+#check-characters-button {
+
+    margin: 4px;
+
+}
+
+
+/* ========================================= */
+/* CLOSE MAP BUTTON                       */
+/* ========================================= */
+
+#close-map-button {
+
+    margin-top: 15px;
+
+    width: 100%;
+
+    background:
+        #171d30;
+
+}
+
+
+/* ========================================= */
+/* LOCATION ACTIVE STATE                  */
+/* ========================================= */
+
+.location-button.active {
+
+    border-color:
+        #aab8e0;
+
+    box-shadow:
+        0 0 0 2px rgba(170, 184, 224, 0.2),
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* ========================================= */
+/* LOCATION LOCKED STATE                  */
+/* ========================================= */
+
+.location-button.locked {
+
+    opacity: 0.45;
+
+    filter:
+        grayscale(0.6);
+
+    cursor:
+        not-allowed;
+
+}
+
+
+/* ========================================= */
+/* CAMPUS DECORATION                      */
+/* ========================================= */
+
+#campus-map .location-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.05),
+            transparent 40%
+        );
+
+}
+
+
+/* ========================================= */
+/* TABLET MAP                             */
+/* ========================================= */
+
+@media (max-width: 800px) {
+
+    #campus-map {
+
+        min-height: 500px;
+
+        padding: 20px;
+
+        gap: 8px;
+
+    }
+
+
+    .location-button {
+
+        min-height: 75px;
+
+        padding: 8px;
+
+    }
+
+
+    .location-icon {
+
+        font-size: 1.6rem;
+
+    }
+
+
+    .location-name {
+
+        font-size: 0.8rem;
+
+    }
+
+
+    .location-description {
+
+        font-size: 0.58rem;
+
+    }
+
+
+    .courtyard-location {
+
+        min-height: 140px;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* MOBILE MAP                             */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+    #campus-map-panel {
+
+        width: 96vw;
+
+        padding: 12px;
+
+        border-radius: 15px;
+
+    }
+
+
+    #campus-header h2 {
+
+        font-size: 1.35rem;
+
+    }
+
+
+    #campus-map {
+
+        min-height: 420px;
+
+        padding: 12px;
+
+        gap: 6px;
+
+    }
+
+
+    #campus-map::before {
+
+        height: 45px;
+
+    }
+
+
+    #campus-map::after {
+
+        width: 45px;
+
+    }
+
+
+    .location-button {
+
+        min-height: 65px;
+
+        border-radius: 10px;
+
+    }
+
+
+    .location-icon {
+
+        font-size: 1.35rem;
+
+    }
+
+
+    .location-name {
+
+        font-size: 0.7rem;
+
+    }
+
+
+    .location-description {
+
+        display: none;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* VERY SMALL SCREENS                     */
+/* ========================================= */
+
+@media (max-width: 420px) {
+
+    #campus-map {
+
+        min-height: 350px;
+
+        padding: 8px;
+
+        gap: 4px;
+
+    }
+
+
+    .location-button {
+
+        min-height: 55px;
+
+        padding: 5px;
+
+    }
+
+
+    .location-icon {
+
+        font-size: 1.1rem;
+
+    }
+
+
+    .location-name {
+
+        font-size: 0.58rem;
+
+    }
+
+
+    .courtyard-location {
+
+        min-height: 100px;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* END OF CSS PART 3                      */
+/* ========================================= */
+
+
+/* ========================================= */
+/* ALASHIA ACADEMY                          */
+/* CSS PART 4 - MENUS & RELATIONSHIPS       */
+/* ========================================= */
+
+
+/* ========================================= */
+/* RELATIONSHIP PANEL                      */
+/* ========================================= */
+
+#relationship-panel {
+
+    max-width: 850px;
+
+}
+
+
+#relationship-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+}
+
+
+/* ========================================= */
+/* CHARACTER CARD                          */
+/* ========================================= */
+
+.character-card {
+
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b2237,
+            #121726
+        );
+
+    border:
+        1px solid #38435f;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+.character-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #64749d;
+
+}
+
+
+/* ========================================= */
+/* CHARACTER CARD HEADER                   */
+/* ========================================= */
+
+.character-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.character-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #29334f;
+
+    border:
+        1px solid #465374;
+
+    border-radius: 50%;
+
+    font-size: 1.3rem;
+
+}
+
+
+/* ========================================= */
+/* RELATIONSHIP STAT                       */
+/* ========================================= */
+
+.relationship-stat {
+
+    margin-top: 12px;
+
+}
+
+
+.relationship-stat > span:first-child {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #b9c1d8;
+
+    font-size: 0.78rem;
+
+}
+
+
+/* ========================================= */
+/* STAT BAR                                */
+/* ========================================= */
+
+.stat-bar {
+
+    width: 100%;
+
+    height: 8px;
+
+    overflow: hidden;
+
+    background:
+        #0b0e17;
+
+    border:
+        1px solid #303951;
+
+    border-radius: 20px;
+
+}
+
+
+.stat-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    transition:
+        width 0.5s ease;
+
+}
+
+
+/* ========================================= */
+/* RELATIONSHIP BAR TYPES                  */
+/* ========================================= */
+
+.affection-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #71334a,
+            #c15a7b
+        );
+
+}
+
+
+.friendship-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #315c75,
+            #5598bd
+        );
+
+}
+
+
+.trust-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #42623e,
+            #7ba96c
+        );
+
+}
+
+
+.relationship-stat > span:last-child {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #8f99b5;
+
+    font-size: 0.7rem;
+
+}
+
+
+/* ========================================= */
+/* PHONE PANEL                             */
+/* ========================================= */
+
+#phone-panel {
+
+    max-width: 650px;
+
+}
+
+
+#phone-contacts {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+}
+
+
+#phone-contacts h3 {
+
+    margin-bottom: 5px;
+
+}
+
+
+/* ========================================= */
+/* CONTACT BUTTON                           */
+/* ========================================= */
+
+.contact-button {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-align: left;
+
+    background:
+        #181f32;
+
+}
+
+
+.contact-button:hover {
+
+    background:
+        #283451;
+
+}
+
+
+/* ========================================= */
+/* PHONE MESSAGES                          */
+/* ========================================= */
+
+#phone-messages {
+
+    padding: 15px;
+
+    background:
+        #0d111e;
+
+    border:
+        1px solid #303951;
+
+    border-radius: 12px;
+
+}
+
+
+#message-display {
+
+    min-height: 130px;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    background:
+        #141a2a;
+
+    border-radius: 10px;
+
+    color: #adb5cd;
+
+}
+
+
+/* ========================================= */
+/* JOURNAL PANEL                           */
+/* ========================================= */
+
+#journal-panel {
+
+    max-width: 800px;
+
+}
+
+
+/* ========================================= */
+/* JOURNAL TABS                            */
+/* ========================================= */
+
+.journal-tabs {
+
     display: flex;
 
     flex-wrap: wrap;
 
-    gap: 12px;
+    gap: 7px;
 
-    width: 100%;
+    margin-bottom: 15px;
 
-    min-height: 60px;
-
-    align-items: center;
 }
 
 
-/* ================================
-   BUTTONS
-================================ */
+.journal-tabs button {
 
-#choices button {
-    display: inline-block;
+    flex: 1;
 
-    min-height: 52px;
+    min-width: 100px;
 
-    padding: 12px 25px;
+    padding: 10px;
 
-    background: white;
+    font-size: 0.82rem;
 
-    border: 3px solid #ff9ecb;
+}
 
-    border-radius: 26px;
 
-    color: #c94f8d;
+/* ========================================= */
+/* JOURNAL CONTENT                         */
+/* ========================================= */
 
-    font-size: 17px;
+#journal-content {
+
+    min-height: 300px;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #161c2c,
+            #101421
+        );
+
+    border:
+        1px solid #323c58;
+
+    border-radius: 12px;
+
+    color: #b9c1d8;
+
+    line-height: 1.7;
+
+}
+
+
+/* ========================================= */
+/* INVENTORY PANEL                         */
+/* ========================================= */
+
+#inventory-panel {
+
+    max-width: 700px;
+
+}
+
+
+#inventory-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    min-height: 260px;
+
+    padding: 12px;
+
+    background:
+        #0d111d;
+
+    border:
+        1px solid #303951;
+
+    border-radius: 14px;
+
+}
+
+
+#empty-inventory-message {
+
+    grid-column:
+        1 / -1;
+
+    align-self: center;
+
+    text-align: center;
+
+    color: #737d99;
+
+}
+
+
+/* ========================================= */
+/* INVENTORY ITEM                          */
+/* ========================================= */
+
+.inventory-item {
+
+    min-height: 100px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 10px;
+
+    background:
+        #181f32;
+
+    border:
+        1px solid #37425e;
+
+    border-radius: 10px;
+
+}
+
+
+.inventory-item:hover {
+
+    background:
+        #242e49;
+
+    border-color:
+        #66779f;
+
+}
+
+
+.inventory-item-icon {
+
+    font-size: 2rem;
+
+}
+
+
+.inventory-item-name {
+
+    font-size: 0.75rem;
+
+    text-align: center;
+
+}
+
+
+/* ========================================= */
+/* PLAYER STATS PANEL                     */
+/* ========================================= */
+
+#stats-panel {
+
+    max-width: 550px;
+
+}
+
+
+#player-stat-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/* ========================================= */
+/* PLAYER STAT                             */
+/* ========================================= */
+
+.player-stat {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 14px 16px;
+
+    background:
+        #181f32;
+
+    border:
+        1px solid #35405c;
+
+    border-radius: 11px;
+
+}
+
+
+.player-stat span:first-child {
+
+    color: #c3c9dc;
+
+}
+
+
+.player-stat span:last-child {
+
+    min-width: 38px;
+
+    padding: 5px 8px;
+
+    text-align: center;
+
+    background:
+        #293451;
+
+    border-radius: 7px;
 
     font-weight: bold;
 
-    cursor: pointer;
-
-    box-shadow:
-        0 5px 12px rgba(220,80,140,0.15);
-
-    transition:
-        transform 0.15s,
-        background 0.15s,
-        box-shadow 0.15s;
-}
-
-#choices button:hover {
-    background: #ffe3ef;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 18px rgba(220,80,140,0.22);
-}
-
-#choices button:active {
-    transform: translateY(1px);
 }
 
 
-/* ================================
-   PETALS
-================================ */
+/* ========================================= */
+/* CHARACTER DISCOVERY                    */
+/* ========================================= */
 
-.petal {
-    position: absolute;
+#character-discovery-panel {
 
-    top: -40px;
+    max-width: 550px;
 
-    z-index: 10;
-
-    pointer-events: none;
-
-    font-size: 24px;
-
-    animation: fall linear forwards;
-
-    opacity: 0.85;
 }
 
-@keyframes fall {
 
-    0% {
-        transform:
-            translateY(-40px)
-            rotate(0deg);
+#nearby-character-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+/* ========================================= */
+/* NEARBY CHARACTER                        */
+/* ========================================= */
+
+.nearby-character {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    text-align: left;
+
+    background:
+        #181f32;
+
+}
+
+
+/* ========================================= */
+/* CHARACTER INTERACTION                  */
+/* ========================================= */
+
+#character-interaction-panel {
+
+    max-width: 550px;
+
+}
+
+
+#character-interaction-info {
+
+    text-align: center;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.large-character-icon {
+
+    width: 90px;
+
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin:
+        0 auto 15px;
+
+    background:
+        #222c47;
+
+    border:
+        2px solid #4a597c;
+
+    border-radius: 50%;
+
+    font-size: 3rem;
+
+}
+
+
+#interaction-character-description {
+
+    color: #aab2c9;
+
+    line-height: 1.6;
+
+}
+
+
+/* ========================================= */
+/* INTERACTION BUTTONS                    */
+/* ========================================= */
+
+#interaction-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+
+}
+
+
+#interaction-buttons button {
+
+    min-height: 52px;
+
+}
+
+
+/* ========================================= */
+/* GIFT PANEL                              */
+/* ========================================= */
+
+#gift-panel {
+
+    max-width: 600px;
+
+}
+
+
+#gift-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+}
+
+
+/* ========================================= */
+/* GIFT BUTTON                             */
+/* ========================================= */
+
+.gift-button {
+
+    min-height: 130px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 15px;
+
+}
+
+
+.gift-button strong {
+
+    font-size: 0.9rem;
+
+}
+
+
+.gift-button span {
+
+    color: #8f99b5;
+
+    font-size: 0.7rem;
+
+}
+
+
+/* ========================================= */
+/* MENU ANIMATION                          */
+/* ========================================= */
+
+.game-panel {
+
+    animation:
+        panelAppear 0.2s ease-out;
+
+}
+
+
+@keyframes panelAppear {
+
+    from {
 
         opacity: 0;
-    }
 
-    10% {
-        opacity: 0.9;
-    }
-
-    100% {
         transform:
-            translateY(calc(100vh - 330px))
-            rotate(360deg);
+            translate(-50%, -47%)
+            scale(0.97);
 
-        opacity: 0;
     }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
 }
 
 
-/* ================================
-   PHONE / SMALL SCREEN
-================================ */
+/* ========================================= */
+/* TABLET MENUS                            */
+/* ========================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
-    #hud {
-        top: 10px;
-        left: 10px;
+    #relationship-list {
 
-        width: calc(100% - 20px);
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #inventory-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* MOBILE MENUS                            */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+    .game-panel {
+
+        width: 94vw;
+
+        max-height: 82vh;
+
+        padding: 15px;
+
+        border-radius: 14px;
+
+    }
+
+
+    #relationship-list {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #inventory-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    #interaction-buttons {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #gift-list {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .journal-tabs {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .journal-tabs button {
 
         min-width: 0;
 
-        padding: 10px 12px;
     }
 
-    .hud-row {
-        gap: 8px;
-        font-size: 13px;
-    }
-
-    #title-card {
-        top: 100px;
-        width: 90%;
-    }
-
-    #title-card h1 {
-        font-size: 31px;
-    }
-
-    #chapter-text {
-        font-size: 14px;
-    }
-
-    #textbox {
-        left: 2%;
-        bottom: 2%;
-
-        width: 96%;
-
-        height: 280px;
-
-        padding: 18px 20px;
-    }
-
-    #dialogue {
-        font-size: 17px;
-
-        min-height: 65px;
-    }
-
-    #name {
-        font-size: 17px;
-    }
-
-    #choices button {
-        min-height: 46px;
-
-        padding: 9px 17px;
-
-        font-size: 15px;
-    }
 }
 
 
-/* ================================
-   SHORT SCREEN
-================================ */
+/* ========================================= */
+/* VERY SMALL SCREENS                     */
+/* ========================================= */
 
-@media (max-height: 650px) {
+@media (max-width: 420px) {
 
-    #textbox {
-        height: 250px;
+    .game-panel {
+
+        padding: 12px;
+
     }
 
-    #dialogue {
-        font-size: 16px;
 
-        min-height: 50px;
+    .character-card {
+
+        padding: 14px;
+
     }
 
-    #title-card {
-        top: 85px;
+
+    .character-card-header {
+
+        margin-bottom: 12px;
+
     }
 
-    #title-card h1 {
-        font-size: 28px;
+
+    .character-icon {
+
+        width: 36px;
+
+        height: 36px;
+
+        font-size: 1rem;
+
     }
+
+
+    .journal-tabs {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    #inventory-grid {
+
+        gap: 6px;
+
+    }
+
+
+    .inventory-item {
+
+        min-height: 80px;
+
+    }
+
+
+    .inventory-item-icon {
+
+        font-size: 1.5rem;
+
+    }
+
 }
-   
-    
+
+
+/* ========================================= */
+/* END OF CSS PART 4                      */
+/* ========================================= */
+
+/* ========================================= */
+/* ALASHIA ACADEMY                          */
+/* CSS PART 5 - DIALOGUE & EVENTS           */
+/* ========================================= */
+
+
+/* ========================================= */
+/* DIALOGUE PANEL                          */
+/* ========================================= */
+
+#dialogue-panel {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    top: auto;
+
+    transform:
+        translateX(-50%);
+
+    width: min(900px, 94vw);
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 22, 37, 0.98),
+            rgba(9, 12, 21, 0.98)
+        );
+
+    border:
+        1px solid #465270;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 18px 55px rgba(0, 0, 0, 0.6);
+
+    z-index: 200;
+
+    display: none;
+
+}
+
+
+/* ========================================= */
+/* DIALOGUE CHARACTER                      */
+/* ========================================= */
+
+#dialogue-character {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+}
+
+
+/* ========================================= */
+/* CHARACTER ICON                          */
+/* ========================================= */
+
+#dialogue-character-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #283451;
+
+    border:
+        1px solid #53627f;
+
+    border-radius: 50%;
+
+    font-size: 1.5rem;
+
+}
+
+
+/* ========================================= */
+/* CHARACTER NAME                          */
+/* ========================================= */
+
+#dialogue-character-name {
+
+    font-size: 1.15rem;
+
+    color: #ffffff;
+
+}
+
+
+/* ========================================= */
+/* DIALOGUE BOX                            */
+/* ========================================= */
+
+#dialogue-box {
+
+    min-height: 105px;
+
+    padding: 18px;
+
+    background:
+        rgba(8, 11, 19, 0.75);
+
+    border:
+        1px solid #303951;
+
+    border-radius: 12px;
+
+}
+
+
+/* ========================================= */
+/* DIALOGUE TEXT                           */
+/* ========================================= */
+
+#dialogue-text {
+
+    color: #dfe4f5;
+
+    font-size: 1rem;
+
+    line-height: 1.75;
+
+}
+
+
+/* ========================================= */
+/* DIALOGUE CHOICES                        */
+/* ========================================= */
+
+#dialogue-choices {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+
+    margin-top: 12px;
+
+}
+
+
+/* ========================================= */
+/* CHOICE BUTTON                           */
+/* ========================================= */
+
+.choice-button {
+
+    min-height: 52px;
+
+    padding: 12px 15px;
+
+    text-align: left;
+
+    background:
+        #181f32;
+
+    border:
+        1px solid #394563;
+
+    border-radius: 10px;
+
+}
+
+
+/* ========================================= */
+/* CHOICE HOVER                            */
+/* ========================================= */
+
+.choice-button:hover {
+
+    background:
+        #293451;
+
+    border-color:
+        #7182aa;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ========================================= */
+/* CONTINUE BUTTON                         */
+/* ========================================= */
+
+#dialogue-continue {
+
+    width: 100%;
+
+    margin-top: 12px;
+
+    min-height: 48px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #26324e,
+            #334263
+        );
+
+    font-weight: bold;
+
+}
+
+
+/* ========================================= */
+/* EVENT NOTIFICATION                     */
+/* ========================================= */
+
+#event-notification {
+
+    position: fixed;
+
+    top: 95px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(-20px);
+
+    width: min(430px, 90vw);
+
+    display: none;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 18px;
+
+    background:
+        rgba(16, 20, 33, 0.97);
+
+    border:
+        1px solid #4a5776;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.5);
+
+    z-index: 400;
+
+    animation:
+        notificationAppear 0.3s ease forwards;
+
+}
+
+
+/* ========================================= */
+/* EVENT ICON                              */
+/* ========================================= */
+
+#event-notification-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #27324d;
+
+    border-radius: 50%;
+
+    font-size: 1.25rem;
+
+}
+
+
+/* ========================================= */
+/* EVENT TITLE                             */
+/* ========================================= */
+
+#event-notification-title {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.95rem;
+
+}
+
+
+/* ========================================= */
+/* EVENT TEXT                              */
+/* ========================================= */
+
+#event-notification-text {
+
+    color: #aeb7ce;
+
+    font-size: 0.78rem;
+
+}
+
+
+/* ========================================= */
+/* TOAST                                    */
+/* ========================================= */
+
+#toast-message {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 35px;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    min-width: 230px;
+
+    max-width: 90vw;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 12px 18px;
+
+    background:
+        rgba(13, 17, 28, 0.97);
+
+    border:
+        1px solid #414c69;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
+
+    z-index: 450;
+
+}
+
+
+/* ========================================= */
+/* TOAST TEXT                              */
+/* ========================================= */
+
+#toast-text {
+
+    color: #d9def0;
+
+    font-size: 0.85rem;
+
+}
+
+
+/* ========================================= */
+/* CONFIRMATION DIALOG                     */
+/* ========================================= */
+
+#confirmation-overlay {
+
+    z-index: 600;
+
+}
+
+
+#confirmation-dialog {
+
+    width: min(460px, 92vw);
+
+}
+
+
+/* ========================================= */
+/* CONFIRMATION TITLE                     */
+/* ========================================= */
+
+#confirmation-title {
+
+    margin-bottom: 10px;
+
+}
+
+
+/* ========================================= */
+/* CONFIRMATION TEXT                      */
+/* ========================================= */
+
+#confirmation-text {
+
+    margin-bottom: 20px;
+
+    color: #aab3ca;
+
+    line-height: 1.6;
+
+}
+
+
+/* ========================================= */
+/* CONFIRMATION BUTTONS                   */
+/* ========================================= */
+
+#confirmation-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+}
+
+
+#confirm-button {
+
+    background:
+        #30415f;
+
+}
+
+
+#cancel-button {
+
+    background:
+        #202536;
+
+}
+
+
+/* ========================================= */
+/* DAY TRANSITION                          */
+/* ========================================= */
+
+#day-transition {
+
+    z-index: 700;
+
+}
+
+
+.day-transition-content {
+
+    width: min(600px, 92vw);
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151b2c,
+            #090c15
+        );
+
+    border:
+        1px solid #485575;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.7);
+
+}
+
+
+/* ========================================= */
+/* DAY ICON                               */
+/* ========================================= */
+
+#new-day-icon {
+
+    margin-bottom: 15px;
+
+    font-size: 4rem;
+
+}
+
+
+/* ========================================= */
+/* DAY TITLE                              */
+/* ========================================= */
+
+.day-transition-content h1 {
+
+    margin-bottom: 10px;
+
+    font-size: 2rem;
+
+}
+
+
+/* ========================================= */
+/* DAY DESCRIPTION                        */
+/* ========================================= */
+
+#new-day-text {
+
+    margin-bottom: 25px;
+
+    color: #aeb7ce;
+
+}
+
+
+/* ========================================= */
+/* ENDING PANEL                            */
+/* ========================================= */
+
+#ending-panel {
+
+    z-index: 800;
+
+}
+
+
+.ending-content {
+
+    text-align: center;
+
+    padding: 25px;
+
+}
+
+
+/* ========================================= */
+/* ENDING ICON                             */
+/* ========================================= */
+
+#ending-icon {
+
+    margin-bottom: 15px;
+
+    font-size: 4rem;
+
+}
+
+
+/* ========================================= */
+/* ENDING TITLE                            */
+/* ========================================= */
+
+#ending-title {
+
+    margin-bottom: 10px;
+
+    font-size: 2rem;
+
+}
+
+
+/* ========================================= */
+/* ENDING DESCRIPTION                     */
+/* ========================================= */
+
+#ending-description {
+
+    max-width: 600px;
+
+    margin:
+        0 auto 25px;
+
+    color: #aab3ca;
+
+    line-height: 1.7;
+
+}
+
+
+/* ========================================= */
+/* GLOBAL OVERLAY                          */
+/* ========================================= */
+
+#global-overlay {
+
+    z-index: 900;
+
+}
+
+
+#global-overlay-content {
+
+    width: min(600px, 92vw);
+
+    padding: 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151b2d,
+            #090c14
+        );
+
+    border:
+        1px solid #455271;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.7);
+
+}
+
+
+#global-overlay-title {
+
+    margin-bottom: 12px;
+
+}
+
+
+#global-overlay-message {
+
+    margin-bottom: 22px;
+
+    color: #aab3ca;
+
+    line-height: 1.6;
+
+}
+
+
+/* ========================================= */
+/* LOADING SCREEN                          */
+/* ========================================= */
+
+#loading-screen {
+
+    z-index: 1000;
+
+}
+
+
+.loading-content {
+
+    width: min(500px, 90vw);
+
+    text-align: center;
+
+}
+
+
+.loading-icon {
+
+    margin-bottom: 15px;
+
+    font-size: 4rem;
+
+    animation:
+        loadingPulse 1.4s ease-in-out infinite;
+
+}
+
+
+.loading-content h1 {
+
+    margin-bottom: 8px;
+
+}
+
+
+.loading-content p {
+
+    color: #9da7c0;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* ========================================= */
+/* LOADING BAR                             */
+/* ========================================= */
+
+#loading-bar-container {
+
+    width: 100%;
+
+    height: 9px;
+
+    overflow: hidden;
+
+    background:
+        #0a0d15;
+
+    border:
+        1px solid #343d56;
+
+    border-radius: 20px;
+
+}
+
+
+#loading-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3b4d70,
+            #7588b2
+        );
+
+    transition:
+        width 0.3s ease;
+
+}
+
+
+/* ========================================= */
+/* WELCOME SCREEN                          */
+/* ========================================= */
+
+#welcome-screen {
+
+    z-index: 1100;
+
+}
+
+
+.welcome-content {
+
+    width: min(650px, 92vw);
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #161d30,
+            #090c15
+        );
+
+    border:
+        1px solid #4a5775;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.75);
+
+}
+
+
+.welcome-icon {
+
+    margin-bottom: 15px;
+
+    font-size: 5rem;
+
+    animation:
+        welcomeFloat 3s ease-in-out infinite;
+
+}
+
+
+.welcome-content h1 {
+
+    margin-bottom: 10px;
+
+    font-size: 2rem;
+
+}
+
+
+.welcome-content p {
+
+    margin-bottom: 25px;
+
+    color: #aab3c9;
+
+}
+
+
+/* ========================================= */
+/* BEGIN GAME BUTTON                      */
+/* ========================================= */
+
+#begin-game-button {
+
+    min-width: 180px;
+
+    min-height: 52px;
+
+    font-size: 1.05rem;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2c3b5b,
+            #425578
+        );
+
+}
+
+
+/* ========================================= */
+/* ANIMATIONS                              */
+/* ========================================= */
+
+@keyframes notificationAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes loadingPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: 0.8;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes welcomeFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* MOBILE DIALOGUE                        */
+/* ========================================= */
+
+@media (max-width: 700px) {
+
+    #dialogue-panel {
+
+        bottom: 10px;
+
+        width: 96vw;
+
+        padding: 14px;
+
+        border-radius: 14px;
+
+    }
+
+
+    #dialogue-box {
+
+        min-height: 90px;
+
+        padding: 13px;
+
+    }
+
+
+    #dialogue-text {
+
+        font-size: 0.9rem;
+
+        line-height: 1.6;
+
+    }
+
+
+    #dialogue-choices {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .choice-button {
+
+        min-height: 45px;
+
+        font-size: 0.85rem;
+
+    }
+
+
+    #dialogue-continue {
+
+        min-height: 44px;
+
+    }
+
+
+    #event-notification {
+
+        top: 80px;
+
+    }
+
+
+    .welcome-content {
+
+        padding:
+            30px 18px;
+
+    }
+
+
+    .welcome-icon {
+
+        font-size: 3.8rem;
+
+    }
+
+
+    .welcome-content h1 {
+
+        font-size: 1.55rem;
+
+    }
+
+
+    .day-transition-content {
+
+        padding:
+            30px 18px;
+
+    }
+
+
+    .day-transition-content h1 {
+
+        font-size: 1.55rem;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* SMALL PHONE                            */
+/* ========================================= */
+
+@media (max-width: 420px) {
+
+    #dialogue-character-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 1.2rem;
+
+    }
+
+
+    #dialogue-character-name {
+
+        font-size: 1rem;
+
+    }
+
+
+    #dialogue-text {
+
+        font-size: 0.82rem;
+
+    }
+
+
+    #event-notification {
+
+        width: 94vw;
+
+        padding: 11px;
+
+    }
+
+
+    #event-notification-icon {
+
+        width: 36px;
+
+        height: 36px;
+
+        font-size: 1rem;
+
+    }
+
+
+    #toast-message {
+
+        bottom: 20px;
+
+        min-width: 0;
+
+        width: 90vw;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* END OF CSS PART 5                      */
+/* ========================================= */
+
+
+/* ========================================= */
+/* ALASHIA ACADEMY                          */
+/* CSS PART 6 - FINAL BOSS / POLISH         */
+/* ========================================= */
+
+
+/* ========================================= */
+/* GLOBAL GAME POLISH                      */
+/* ========================================= */
+
+#game {
+
+    isolation: isolate;
+
+}
+
+
+/* ========================================= */
+/* SMOOTH INTERACTIONS                     */
+/* ========================================= */
+
+button,
+.location-button,
+.character-card,
+.inventory-item,
+.contact-button {
+
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
+
+}
+
+
+/* ========================================= */
+/* FOCUS STATES                            */
+/* ========================================= */
+
+button:focus-visible {
+
+    outline:
+        2px solid #8799c4;
+
+    outline-offset:
+        3px;
+
+}
+
+
+/* ========================================= */
+/* GAME BACKGROUND ATMOSPHERE              */
+/* ========================================= */
+
+#game::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(80, 100, 150, 0.08),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(100, 75, 130, 0.06),
+            transparent 30%
+        );
+
+}
+
+
+/* ========================================= */
+/* SUBTLE LIGHT EFFECT                     */
+/* ========================================= */
+
+#game::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: 0.18;
+
+    background:
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.015) 0px,
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    mix-blend-mode:
+        overlay;
+
+}
+
+
+/* ========================================= */
+/* MAIN INTERACTION HIGHLIGHT              */
+/* ========================================= */
+
+button:hover,
+.location-button:hover,
+.inventory-item:hover,
+.character-card:hover {
+
+    transition:
+        all 0.18s ease;
+
+}
+
+
+/* ========================================= */
+/* ACTION AREA POLISH                      */
+/* ========================================= */
+
+#location-actions {
+
+    width:
+        min(900px, 100%);
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+
+}
+
+
+#location-actions button {
+
+    min-height:
+        46px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b2338,
+            #131928
+        );
+
+}
+
+
+/* ========================================= */
+/* EXPLORE BUTTON                          */
+/* ========================================= */
+
+#explore-button-2 {
+
+    font-weight:
+        bold;
+
+}
+
+
+/* ========================================= */
+/* PEOPLE BUTTON                            */
+/* ========================================= */
+
+#talk-nearby-button {
+
+    background:
+        linear-gradient(
+            145deg,
+            #202b44,
+            #151c2e
+        );
+
+}
+
+
+/* ========================================= */
+/* NOTIFICATION ACTIVE                    */
+/* ========================================= */
+
+#notification-area.active
+#notification-list {
+
+    display:
+        block;
+
+}
+
+
+/* ========================================= */
+/* NOTIFICATION LIST ITEMS                 */
+/* ========================================= */
+
+#notification-list p {
+
+    padding:
+        9px;
+
+    color:
+        #aab3ca;
+
+    border-bottom:
+        1px solid #282f45;
+
+}
+
+
+#notification-list p:last-child {
+
+    border-bottom:
+        none;
+
+}
+
+
+/* ========================================= */
+/* DEBUG PANEL                             */
+/* ========================================= */
+
+#debug-panel {
+
+    max-width:
+        700px;
+
+}
+
+
+#debug-controls {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        8px;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+#debug-controls button {
+
+    min-height:
+        45px;
+
+    font-size:
+        0.85rem;
+
+}
+
+
+/* ========================================= */
+/* DEBUG OUTPUT                            */
+/* ========================================= */
+
+#debug-output {
+
+    min-height:
+        160px;
+
+    max-height:
+        300px;
+
+    overflow:
+        auto;
+
+    padding:
+        15px;
+
+    background:
+        #070910;
+
+    border:
+        1px solid #2d354d;
+
+    border-radius:
+        10px;
+
+}
+
+
+#debug-text {
+
+    margin:
+        0;
+
+    color:
+        #9da7c0;
+
+    font-family:
+        monospace;
+
+    font-size:
+        0.75rem;
+
+    white-space:
+        pre-wrap;
+
+    word-break:
+        break-word;
+
+}
+
+
+/* ========================================= */
+/* ACTION RESULT ANIMATION                 */
+/* ========================================= */
+
+#action-result.show {
+
+    animation:
+        resultPop 0.3s ease;
+
+}
+
+
+@keyframes resultPop {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* CHARACTER CARD ENTRANCE                 */
+/* ========================================= */
+
+.character-card {
+
+    animation:
+        cardAppear 0.35s ease both;
+
+}
+
+
+.character-card:nth-child(2) {
+
+    animation-delay:
+        0.05s;
+
+}
+
+
+.character-card:nth-child(3) {
+
+    animation-delay:
+        0.1s;
+
+}
+
+
+.character-card:nth-child(4) {
+
+    animation-delay:
+        0.15s;
+
+}
+
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* STAT BAR ANIMATION                      */
+/* ========================================= */
+
+.stat-fill {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+.stat-fill::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -100%;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
+
+    animation:
+        statShine 2.5s infinite;
+
+}
+
+
+@keyframes statShine {
+
+    0% {
+
+        left:
+            -100%;
+
+    }
+
+    50%,
+    100% {
+
+        left:
+            100%;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* INVENTORY POLISH                        */
+/* ========================================= */
+
+.inventory-item {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+.inventory-item::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.04),
+            transparent 45%
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+/* ========================================= */
+/* PHONE MESSAGE BUBBLES                  */
+/* ========================================= */
+
+.message-bubble {
+
+    max-width:
+        80%;
+
+    margin-bottom:
+        8px;
+
+    padding:
+        9px 12px;
+
+    border-radius:
+        12px;
+
+    background:
+        #202a42;
+
+    color:
+        #d5dbee;
+
+    font-size:
+        0.82rem;
+
+}
+
+
+.message-bubble.sent {
+
+    margin-left:
+        auto;
+
+    background:
+        #30405f;
+
+}
+
+
+.message-bubble.received {
+
+    margin-right:
+        auto;
+
+}
+
+
+/* ========================================= */
+/* JOURNAL ENTRY POLISH                   */
+/* ========================================= */
+
+.journal-entry {
+
+    padding:
+        14px;
+
+    margin-bottom:
+        10px;
+
+    background:
+        rgba(27, 33, 51, 0.75);
+
+    border-left:
+        3px solid #596a91;
+
+    border-radius:
+        0 9px 9px 0;
+
+}
+
+
+.journal-entry h3 {
+
+    margin-bottom:
+        5px;
+
+}
+
+
+.journal-entry p {
+
+    color:
+        #aeb7ce;
+
+    font-size:
+        0.85rem;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* ========================================= */
+/* RELATIONSHIP LEVEL BADGE               */
+/* ========================================= */
+
+.relationship-level {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-top:
+        8px;
+
+    padding:
+        4px 8px;
+
+    background:
+        #242e48;
+
+    border:
+        1px solid #3d4a68;
+
+    border-radius:
+        6px;
+
+    color:
+        #aeb9d2;
+
+    font-size:
+        0.68rem;
+
+}
+
+
+/* ========================================= */
+/* CHARACTER INTERACTION HOVER             */
+/* ========================================= */
+
+#interaction-buttons button {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+#interaction-buttons button::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -100%;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.06),
+            transparent
+        );
+
+    transition:
+        left 0.35s ease;
+
+}
+
+
+#interaction-buttons button:hover::after {
+
+    left:
+        100%;
+
+}
+
+
+/* ========================================= */
+/* DIALOGUE TEXT EFFECT                   */
+/* ========================================= */
+
+#dialogue-text.typing {
+
+    min-height:
+        50px;
+
+}
+
+
+/* ========================================= */
+/* CHOICE ENTRANCE                         */
+/* ========================================= */
+
+.choice-button {
+
+    animation:
+        choiceAppear 0.25s ease both;
+
+}
+
+
+.choice-button:nth-child(2) {
+
+    animation-delay:
+        0.05s;
+
+}
+
+
+.choice-button:nth-child(3) {
+
+    animation-delay:
+        0.1s;
+
+}
+
+
+.choice-button:nth-child(4) {
+
+    animation-delay:
+        0.15s;
+
+}
+
+
+@keyframes choiceAppear {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(6px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* DIALOGUE CONTINUE GLOW                 */
+/* ========================================= */
+
+#dialogue-continue:hover {
+
+    box-shadow:
+        0 0 18px rgba(110, 130, 180, 0.2);
+
+}
+
+
+/* ========================================= */
+/* DAY TRANSITION BACKDROP                */
+/* ========================================= */
+
+#day-transition {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50, 63, 92, 0.25),
+            rgba(0,0,0,0.85)
+        );
+
+}
+
+
+/* ========================================= */
+/* ENDING SPECIAL EFFECT                   */
+/* ========================================= */
+
+#ending-panel {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(60, 70, 110, 0.25),
+            rgba(10, 13, 22, 0.98)
+        );
+
+}
+
+
+/* ========================================= */
+/* WELCOME SCREEN ATMOSPHERE               */
+/* ========================================= */
+
+#welcome-screen {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(48, 63, 96, 0.25),
+            rgba(3, 5, 9, 0.94)
+        );
+
+}
+
+
+/* ========================================= */
+/* WELCOME BUTTON PULSE                   */
+/* ========================================= */
+
+#begin-game-button {
+
+    animation:
+        beginPulse 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes beginPulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 0 rgba(100, 130, 190, 0);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 24px rgba(100, 130, 190, 0.18);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* LOADING BAR SHINE                       */
+/* ========================================= */
+
+#loading-bar {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+#loading-bar::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -100%;
+
+    width:
+        50%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
+
+    animation:
+        loadingShine 1.2s infinite;
+
+}
+
+
+@keyframes loadingShine {
+
+    from {
+
+        left:
+            -100%;
+
+    }
+
+    to {
+
+        left:
+            150%;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* LOCATION BUTTON RIPPLE-LIKE EFFECT     */
+/* ========================================= */
+
+.location-button:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* ========================================= */
+/* CAMPUS LOCATION LABEL                  */
+/* ========================================= */
+
+.location-button strong {
+
+    color:
+        #eef1ff;
+
+}
+
+
+/* ========================================= */
+/* DISABLED LOCATION                      */
+/* ========================================= */
+
+.location-button.locked:hover {
+
+    transform:
+        none;
+
+    border-color:
+        #414b63;
+
+}
+
+
+/* ========================================= */
+/* OVERLAY TRANSITION                      */
+/* ========================================= */
+
+.overlay {
+
+    animation:
+        overlayFade 0.2s ease;
+
+}
+
+
+@keyframes overlayFade {
+
+    from {
+
+        opacity:
+            0;
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* TOUCH DEVICES                           */
+/* ========================================= */
+
+@media (hover: none) {
+
+    button:hover {
+
+        transform:
+            none;
+
+    }
+
+
+    .location-button:hover {
+
+        transform:
+            none;
+
+    }
+
+
+    .character-card:hover {
+
+        transform:
+            none;
+
+    }
+
+
+    .inventory-item:hover {
+
+        transform:
+            none;
+
+    }
+
+
+    button:active {
+
+        transform:
+            scale(0.97);
+
+    }
+
+}
+
+
+/* ========================================= */
+/* TABLET FINAL ADJUSTMENTS                */
+/* ========================================= */
+
+@media (max-width: 800px) {
+
+    #location-actions {
+
+        padding:
+            0 5px;
+
+    }
+
+
+    #debug-controls {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #dialogue-panel {
+
+        max-height:
+            55vh;
+
+        overflow-y:
+            auto;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* PHONE FINAL ADJUSTMENTS                 */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+    #location-actions {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    #location-actions button {
+
+        min-height:
+            44px;
+
+        font-size:
+            0.78rem;
+
+    }
+
+
+    #action-result {
+
+        padding:
+            9px 12px;
+
+    }
+
+
+    #action-result-text {
+
+        font-size:
+            0.75rem;
+
+    }
+
+
+    #debug-output {
+
+        max-height:
+            220px;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* TINY PHONE FINAL FIXES                 */
+/* ========================================= */
+
+@media (max-width: 360px) {
+
+    #location-actions {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    #dialogue-panel {
+
+        bottom:
+            5px;
+
+        width:
+            98vw;
+
+    }
+
+
+    #dialogue-box {
+
+        min-height:
+            75px;
+
+        padding:
+            10px;
+
+    }
+
+
+    #dialogue-text {
+
+        font-size:
+            0.78rem;
+
+    }
+
+
+    .welcome-content {
+
+        padding:
+            22px 14px;
+
+    }
+
+
+    .welcome-content h1 {
+
+        font-size:
+            1.3rem;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* REDUCED MOTION ACCESSIBILITY            */
+/* ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* FINAL SAFETY: HIDDEN PANELS              */
+/* ========================================= */
+
+[hidden] {
+
+    display:
+        none !important;
+
+}
+
+
+/* ========================================= */
+/* FINAL GAME POLISH                       */
+/* ========================================= */
+
+::selection {
+
+    background:
+        #3c4c70;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* ========================================= */
+/* ALASHIA ACADEMY CSS COMPLETE            */
+/* ========================================= */
+/*                                       */
+/*       ██████╗ ███████╗███╗   ██╗      */
+/*      ██╔═══██╗██╔════╝████╗  ██║      */
+/*      ██║   ██║█████╗  ██╔██╗ ██║      */
+/*      ██║   ██║██╔══╝  ██║╚██╗██║      */
+/*      ╚██████╔╝███████╗██║ ╚████║      */
+/*       ╚═════╝ ╚══════╝╚═╝  ╚═══╝      */
+/*                                       */
+/*             CSS COMPLETE              */
+/* ========================================= */
