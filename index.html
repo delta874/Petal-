@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,115 +10,1873 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Pink Petals</title>
+    <title>Alashia Academy</title>
 
-    <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
-<div id="game">
+    <!-- ================================= -->
+    <!-- ALASHIA ACADEMY GAME CONTAINER    -->
+    <!-- ================================= -->
 
-    <!-- Background glow -->
-    <div id="sun-glow"></div>
-
-    <!-- Falling petals -->
-    <div id="petals"></div>
+    <div id="game">
 
 
-    <!-- =========================
-         HUD
-    ========================== -->
+        <!-- =============================== -->
+        <!-- TOP BAR                         -->
+        <!-- =============================== -->
 
-    <div id="hud">
+        <header id="top-bar">
 
-        <div class="hud-row">
-
-            <span>
-                📅 Day
-                <span id="day">1</span>
-            </span>
-
-            <span>
-                💰 $<span id="money">0</span>
-            </span>
-
-            <span>
-                ⚡ <span id="energy">100</span>
-            </span>
-
-        </div>
-
-        <div class="hud-row">
-
-            <span>
-                💖 <span id="affection">0</span>
-            </span>
-
-            <span>
-                🤝 <span id="friendship">0</span>
-            </span>
-
-            <span>
-                📍 <span id="location">Academy Gate</span>
-            </span>
-
-        </div>
-
-    </div>
+            <div id="game-title">
+                <h1>Alashia Academy</h1>
+            </div>
 
 
-    <!-- =========================
-         TITLE
-    ========================== -->
+            <div id="game-status">
 
-    <div id="title-card">
+                <div id="day-display">
+                    Day <span id="day">1</span>
+                </div>
 
-        <h1>🌸 Pink Petals 🌸</h1>
 
-        <p id="chapter-text">
-            Day 1 • Academy Gate
+                <div id="time-display">
+                    <span id="period">Morning</span>
+                </div>
+
+
+                <div id="energy-display">
+                    ⚡
+                    <span id="energy">100</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =============================== -->
+        <!-- MAIN GAME AREA                  -->
+        <!-- =============================== -->
+
+        <main id="main-game">
+
+
+            <!-- ============================= -->
+            <!-- LOCATION HEADER               -->
+            <!-- ============================= -->
+
+            <section id="location-header">
+
+                <h2 id="current-location">
+                    Courtyard
+                </h2>
+
+                <p id="location-description">
+                    The central courtyard of
+                    Alashia Academy.
+                </p>
+
+            </section>
+
+
+
+            <!-- ============================= -->
+            <!-- GAME DISPLAY                  -->
+            <!-- ============================= -->
+
+            <section id="game-display">
+
+                <div id="game-message">
+
+                    <p id="main-message">
+                        Welcome to Alashia Academy.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ============================= -->
+            <!-- ACTION AREA                   -->
+            <!-- ============================= -->
+
+            <section id="action-area">
+
+                <button
+                    id="explore-button"
+                    onclick="campusAction()"
+                >
+                    🗺️ Explore
+                </button>
+
+
+                <button
+                    id="class-button"
+                    onclick="attendClass()"
+                >
+                    📚 Attend Class
+                </button>
+
+
+                <button
+                    id="study-button"
+                    onclick="study()"
+                >
+                    📖 Study
+                </button>
+
+
+                <button
+                    id="relax-button"
+                    onclick="relax()"
+                >
+                    🧘 Relax
+                </button>
+
+
+                <button
+                    id="sleep-button"
+                    onclick="sleep()"
+                >
+                    😴 Sleep
+                </button>
+
+            </section>
+
+        </main>
+
+
+
+        <!-- =============================== -->
+        <!-- BOTTOM MENU                     -->
+        <!-- =============================== -->
+
+        <nav id="bottom-menu">
+
+            <button
+                id="campus-menu-button"
+            >
+                🗺️ Campus
+            </button>
+
+
+            <button
+                id="relationship-menu-button"
+            >
+                ❤️ Relationships
+            </button>
+
+
+            <button
+                id="phone-menu-button"
+            >
+                📱 Phone
+            </button>
+
+
+            <button
+                id="journal-menu-button"
+            >
+                📖 Journal
+            </button>
+
+
+            <button
+                id="inventory-menu-button"
+            >
+                🎒 Inventory
+            </button>
+
+        </nav>
+
+<!-- ================================= -->
+<!-- HTML PART 2 - CAMPUS MAP          -->
+<!-- ================================= -->
+
+<section id="campus-map-panel">
+
+    <!-- Campus Header -->
+    <div id="campus-header">
+
+        <h2>🗺️ Alashia Academy Campus</h2>
+
+        <p>
+            Choose a location to explore.
         </p>
 
     </div>
 
 
-    <!-- =========================
-         CHARACTER AREA
-    ========================== -->
+    <!-- =============================== -->
+    <!-- CAMPUS MAP                      -->
+    <!-- =============================== -->
 
-    <div id="character-area">
+    <div id="campus-map">
 
-        <img
-            id="character"
-            src=""
-            alt=""
+
+        <!-- ============================= -->
+        <!-- COURTYARD                     -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button courtyard-location"
+            onclick="travelTo('courtyard')"
         >
 
+            <span class="location-icon">
+                🌳
+            </span>
+
+            <span class="location-name">
+                Courtyard
+            </span>
+
+            <span class="location-description">
+                Central campus
+            </span>
+
+        </button>
+
+
+
+        <!-- ============================= -->
+        <!-- LIBRARY                       -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button library-location"
+            onclick="travelTo('library')"
+        >
+
+            <span class="location-icon">
+                📚
+            </span>
+
+            <span class="location-name">
+                Library
+            </span>
+
+            <span class="location-description">
+                Study & research
+            </span>
+
+        </button>
+
+
+
+        <!-- ============================= -->
+        <!-- CAFETERIA                     -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button cafeteria-location"
+            onclick="travelTo('cafeteria')"
+        >
+
+            <span class="location-icon">
+                🍔
+            </span>
+
+            <span class="location-name">
+                Cafeteria
+            </span>
+
+            <span class="location-description">
+                Food & socializing
+            </span>
+
+        </button>
+
+
+
+        <!-- ============================= -->
+        <!-- ART WING                      -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button art-location"
+            onclick="travelTo('artWing')"
+        >
+
+            <span class="location-icon">
+                🎨
+            </span>
+
+            <span class="location-name">
+                Art Wing
+            </span>
+
+            <span class="location-description">
+                Art studios
+            </span>
+
+        </button>
+
+
+
+        <!-- ============================= -->
+        <!-- MUSIC HALL                    -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button music-location"
+            onclick="travelTo('musicHall')"
+        >
+
+            <span class="location-icon">
+                🎵
+            </span>
+
+            <span class="location-name">
+                Music Hall
+            </span>
+
+            <span class="location-description">
+                Music & performances
+            </span>
+
+        </button>
+
+
+
+        <!-- ============================= -->
+        <!-- SCIENCE LAB                   -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button science-location"
+            onclick="travelTo('scienceLab')"
+        >
+
+            <span class="location-icon">
+                🔬
+            </span>
+
+            <span class="location-name">
+                Science Lab
+            </span>
+
+            <span class="location-description">
+                Science & engineering
+            </span>
+
+        </button>
+
+
+
+        <!-- ============================= -->
+        <!-- DORMS                         -->
+        <!-- ============================= -->
+
+        <button
+            class="location-button dorm-location"
+            onclick="travelTo('dorms')"
+        >
+
+            <span class="location-icon">
+                🛏️
+            </span>
+
+            <span class="location-name">
+                Dorms
+            </span>
+
+            <span class="location-description">
+                Student residence
+            </span>
+
+        </button>
+
+
     </div>
 
 
-    <!-- =========================
-         DIALOGUE
-    ========================== -->
 
-    <div id="textbox">
+    <!-- =============================== -->
+    <!-- LOCATION INFORMATION            -->
+    <!-- =============================== -->
 
-        <div id="name"></div>
+    <div id="selected-location-info">
 
-        <p id="dialogue">
-            Welcome to Pink Petals...
+        <h3 id="map-location-name">
+            Courtyard
+        </h3>
+
+        <p id="map-location-description">
+            The central courtyard of Alashia Academy.
         </p>
 
-        <div id="choices"></div>
+
+        <button
+            id="explore-location-button"
+            onclick="campusAction()"
+        >
+            🔎 Explore Location
+        </button>
+
+
+        <button
+            id="check-characters-button"
+            onclick="findCharactersAtLocation(campus.currentLocation)"
+        >
+            👥 Look Around
+        </button>
+
+    </div>
+
+
+    <!-- =============================== -->
+    <!-- MAP CLOSE BUTTON                -->
+    <!-- =============================== -->
+
+    <button
+        id="close-map-button"
+        onclick="document.getElementById('campus-map-panel').style.display='none'"
+    >
+        ← Back
+    </button>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- HTML PART 3 - GAME MENUS          -->
+<!-- ================================= -->
+
+
+<!-- ================================= -->
+<!-- RELATIONSHIP MENU                 -->
+<!-- ================================= -->
+
+<section
+    id="relationship-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>❤️ Relationships</h2>
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="relationship-list">
+
+        <!-- AIDEN -->
+
+        <article
+            class="character-card"
+            id="aiden-card"
+        >
+
+            <div class="character-card-header">
+
+                <span class="character-icon">
+                    👤
+                </span>
+
+                <h3 id="aiden-name">
+                    Aiden
+                </h3>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    ❤️ Affection
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="aiden-affection-bar"
+                        class="stat-fill affection-fill"
+                    ></div>
+
+                </div>
+
+                <span id="aiden-affection">
+                    10%
+                </span>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    🤝 Friendship
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="aiden-friendship-bar"
+                        class="stat-fill friendship-fill"
+                    ></div>
+
+                </div>
+
+                <span id="aiden-friendship">
+                    15%
+                </span>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    🔐 Trust
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="aiden-trust-bar"
+                        class="stat-fill trust-fill"
+                    ></div>
+
+                </div>
+
+                <span id="aiden-trust">
+                    10%
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- REN -->
+
+        <article
+            class="character-card"
+            id="ren-card"
+        >
+
+            <div class="character-card-header">
+
+                <span class="character-icon">
+                    👤
+                </span>
+
+                <h3 id="ren-name">
+                    Ren
+                </h3>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    ❤️ Affection
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="ren-affection-bar"
+                        class="stat-fill affection-fill"
+                    ></div>
+
+                </div>
+
+                <span id="ren-affection">
+                    5%
+                </span>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    🤝 Friendship
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="ren-friendship-bar"
+                        class="stat-fill friendship-fill"
+                    ></div>
+
+                </div>
+
+                <span id="ren-friendship">
+                    10%
+                </span>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    🔐 Trust
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="ren-trust-bar"
+                        class="stat-fill trust-fill"
+                    ></div>
+
+                </div>
+
+                <span id="ren-trust">
+                    15%
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- KAI -->
+
+        <article
+            class="character-card"
+            id="kai-card"
+        >
+
+            <div class="character-card-header">
+
+                <span class="character-icon">
+                    👤
+                </span>
+
+                <h3 id="kai-name">
+                    Kai
+                </h3>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    ❤️ Affection
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="kai-affection-bar"
+                        class="stat-fill affection-fill"
+                    ></div>
+
+                </div>
+
+                <span id="kai-affection">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    🤝 Friendship
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="kai-friendship-bar"
+                        class="stat-fill friendship-fill"
+                    ></div>
+
+                </div>
+
+                <span id="kai-friendship">
+                    5%
+                </span>
+
+            </div>
+
+
+            <div class="relationship-stat">
+
+                <span>
+                    🔐 Trust
+                </span>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="kai-trust-bar"
+                        class="stat-fill trust-fill"
+                    ></div>
+
+                </div>
+
+                <span id="kai-trust">
+                    5%
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- PHONE PANEL                       -->
+<!-- ================================= -->
+
+<section
+    id="phone-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>📱 Phone</h2>
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="phone-contacts">
+
+        <h3>Contacts</h3>
+
+
+        <button
+            class="contact-button"
+            onclick="readMessages('aiden')"
+        >
+            👤 Aiden
+        </button>
+
+
+        <button
+            class="contact-button"
+            onclick="readMessages('ren')"
+        >
+            👤 Ren
+        </button>
+
+
+        <button
+            class="contact-button"
+            onclick="readMessages('kai')"
+        >
+            👤 Kai
+        </button>
+
+    </div>
+
+
+    <div id="phone-messages">
+
+        <h3>Messages</h3>
+
+        <div id="message-display">
+
+            <p>
+                Select a contact to view messages.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- JOURNAL PANEL                     -->
+<!-- ================================= -->
+
+<section
+    id="journal-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>📖 Journal</h2>
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div class="journal-tabs">
+
+        <button>
+            📚 Story
+        </button>
+
+        <button>
+            👥 Characters
+        </button>
+
+        <button>
+            🗺️ Locations
+        </button>
+
+        <button>
+            🔎 Secrets
+        </button>
+
+        <button>
+            🎭 Events
+        </button>
+
+    </div>
+
+
+    <div id="journal-content">
+
+        <p>
+            Your journal is currently empty.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- INVENTORY PANEL                   -->
+<!-- ================================= -->
+
+<section
+    id="inventory-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>🎒 Inventory</h2>
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="inventory-grid">
+
+        <p id="empty-inventory-message">
+            Your inventory is empty.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- PLAYER STATS PANEL                -->
+<!-- ================================= -->
+
+<section
+    id="stats-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>📊 Player Stats</h2>
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="player-stat-list">
+
+
+        <div class="player-stat">
+
+            <span>
+                😎 Charm
+            </span>
+
+            <span id="charm-stat">
+                10
+            </span>
+
+        </div>
+
+
+        <div class="player-stat">
+
+            <span>
+                💪 Confidence
+            </span>
+
+            <span id="confidence-stat">
+                10
+            </span>
+
+        </div>
+
+
+        <div class="player-stat">
+
+            <span>
+                🎨 Creativity
+            </span>
+
+            <span id="creativity-stat">
+                10
+            </span>
+
+        </div>
+
+
+        <div class="player-stat">
+
+            <span>
+                🧠 Intelligence
+            </span>
+
+            <span id="intelligence-stat">
+                10
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- ================================= -->
+<!-- HTML PART 4 - DIALOGUE & EVENTS   -->
+<!-- ================================= -->
+
+
+<!-- ================================= -->
+<!-- DIALOGUE PANEL                    -->
+<!-- ================================= -->
+
+<section
+    id="dialogue-panel"
+    class="dialogue-panel"
+>
+
+    <!-- Character Name -->
+
+    <div id="dialogue-character">
+
+        <span id="dialogue-character-icon">
+            👤
+        </span>
+
+        <h2 id="dialogue-character-name">
+            Character
+        </h2>
+
+    </div>
+
+
+    <!-- Dialogue Text -->
+
+    <div id="dialogue-box">
+
+        <p id="dialogue-text">
+            ...
+        </p>
+
+    </div>
+
+
+    <!-- Dialogue Choices -->
+
+    <div id="dialogue-choices">
+
+        <button
+            class="choice-button"
+            id="choice-1"
+            onclick="selectChoice(1)"
+        >
+            ...
+        </button>
+
+
+        <button
+            class="choice-button"
+            id="choice-2"
+            onclick="selectChoice(2)"
+        >
+            ...
+        </button>
+
+
+        <button
+            class="choice-button"
+            id="choice-3"
+            onclick="selectChoice(3)"
+        >
+            ...
+        </button>
+
+
+        <button
+            class="choice-button"
+            id="choice-4"
+            onclick="selectChoice(4)"
+        >
+            ...
+        </button>
+
+    </div>
+
+
+    <!-- Continue -->
+
+    <button
+        id="dialogue-continue"
+        onclick="continueDialogue()"
+    >
+        Continue ▶
+    </button>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- CHARACTER INTERACTION PANEL       -->
+<!-- ================================= -->
+
+<section
+    id="character-interaction-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2 id="interaction-character-name">
+            Character
+        </h2>
+
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="character-interaction-info">
+
+        <div
+            id="interaction-character-icon"
+            class="large-character-icon"
+        >
+            👤
+        </div>
+
+
+        <p id="interaction-character-description">
+            Someone from Alashia Academy.
+        </p>
+
+    </div>
+
+
+    <!-- Interaction Buttons -->
+
+    <div id="interaction-buttons">
+
+
+        <button
+            onclick="talkToCharacter(currentCharacterID)"
+        >
+            💬 Talk
+        </button>
+
+
+        <button
+            onclick="spendTimeWith(currentCharacterID)"
+        >
+            🕐 Spend Time
+        </button>
+
+
+        <button
+            onclick="openGiftMenu(currentCharacterID)"
+        >
+            🎁 Give Gift
+        </button>
+
+
+        <button
+            onclick="sendMessage(currentCharacterID, 'Hey!')"
+        >
+            📱 Text
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- CHARACTER DISCOVERY               -->
+<!-- ================================= -->
+
+<section
+    id="character-discovery-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            👥 People Nearby
+        </h2>
+
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="nearby-character-list">
+
+        <button
+            class="nearby-character"
+            onclick="openCharacterInteraction('aiden')"
+        >
+
+            <span>
+                👤
+            </span>
+
+            <span>
+                Aiden
+            </span>
+
+        </button>
+
+
+        <button
+            class="nearby-character"
+            onclick="openCharacterInteraction('ren')"
+        >
+
+            <span>
+                👤
+            </span>
+
+            <span>
+                Ren
+            </span>
+
+        </button>
+
+
+        <button
+            class="nearby-character"
+            onclick="openCharacterInteraction('kai')"
+        >
+
+            <span>
+                👤
+            </span>
+
+            <span>
+                Kai
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- GIFT MENU                         -->
+<!-- ================================= -->
+
+<section
+    id="gift-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            🎁 Choose a Gift
+        </h2>
+
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="gift-list">
+
+
+        <button
+            class="gift-button"
+            onclick="giveItemAsGift(
+                currentCharacterID,
+                'strawberryTea'
+            )"
+        >
+
+            🍓
+
+            <strong>
+                Strawberry Tea
+            </strong>
+
+            <span>
+                A sweet strawberry drink.
+            </span>
+
+        </button>
+
+
+        <button
+            class="gift-button"
+            onclick="giveItemAsGift(
+                currentCharacterID,
+                'sketchbook'
+            )"
+        >
+
+            📓
+
+            <strong>
+                Sketchbook
+            </strong>
+
+            <span>
+                A blank sketchbook.
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- EVENT NOTIFICATION                -->
+<!-- ================================= -->
+
+<div
+    id="event-notification"
+    class="notification"
+>
+
+    <div id="event-notification-icon">
+        🔔
+    </div>
+
+
+    <div>
+
+        <strong id="event-notification-title">
+            Event
+        </strong>
+
+
+        <p id="event-notification-text">
+            Something happened.
+        </p>
 
     </div>
 
 </div>
 
 
-<!-- JavaScript -->
-<script src="script.js"></script>
+
+<!-- ================================= -->
+<!-- TOAST MESSAGE                     -->
+<!-- ================================= -->
+
+<div
+    id="toast-message"
+    class="toast"
+>
+
+    <span id="toast-icon">
+        ℹ️
+    </span>
+
+
+    <span id="toast-text">
+        Message
+    </span>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- CONFIRMATION DIALOG               -->
+<!-- ================================= -->
+
+<div
+    id="confirmation-overlay"
+    class="overlay"
+>
+
+    <div
+        id="confirmation-dialog"
+        class="dialog-box"
+    >
+
+        <h2 id="confirmation-title">
+            Are you sure?
+        </h2>
+
+
+        <p id="confirmation-text">
+            Choose an option.
+        </p>
+
+
+        <div id="confirmation-buttons">
+
+            <button
+                id="confirm-button"
+            >
+                Yes
+            </button>
+
+
+            <button
+                id="cancel-button"
+                onclick="closeConfirmation()"
+            >
+                No
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- DAY TRANSITION                    -->
+<!-- ================================= -->
+
+<div
+    id="day-transition"
+    class="overlay"
+>
+
+    <div class="day-transition-content">
+
+        <div id="new-day-icon">
+            🌅
+        </div>
+
+
+        <h1>
+            A New Day
+        </h1>
+
+
+        <p id="new-day-text">
+            Another day at Alashia Academy begins.
+        </p>
+
+
+        <button
+            onclick="closeDayTransition()"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- GAME OVER / ENDING PANEL          -->
+<!-- ================================= -->
+
+<section
+    id="ending-panel"
+    class="game-panel"
+>
+
+    <div class="ending-content">
+
+        <div id="ending-icon">
+            ⭐
+        </div>
+
+
+        <h1 id="ending-title">
+            Ending
+        </h1>
+
+
+        <p id="ending-description">
+            Your story at Alashia Academy has reached an ending.
+        </p>
+
+
+        <button
+            onclick="restartGame()"
+        >
+            🔄 Start Over
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================================= -->
+<!-- HTML PART 5 - FINAL UI            -->
+<!-- ================================= -->
+
+
+<!-- ================================= -->
+<!-- TOP MENU / QUICK ACCESS           -->
+<!-- ================================= -->
+
+<div id="quick-access">
+
+    <button
+        id="quick-relationships"
+        onclick="openPanel('relationship-panel')"
+    >
+        ❤️
+        <span>Relationships</span>
+    </button>
+
+
+    <button
+        id="quick-phone"
+        onclick="openPanel('phone-panel')"
+    >
+        📱
+        <span>Phone</span>
+    </button>
+
+
+    <button
+        id="quick-journal"
+        onclick="openPanel('journal-panel')"
+    >
+        📖
+        <span>Journal</span>
+    </button>
+
+
+    <button
+        id="quick-inventory"
+        onclick="openPanel('inventory-panel')"
+    >
+        🎒
+        <span>Inventory</span>
+    </button>
+
+
+    <button
+        id="quick-stats"
+        onclick="openPanel('stats-panel')"
+    >
+        📊
+        <span>Stats</span>
+    </button>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- LOCATION ACTIONS                 -->
+<!-- ================================= -->
+
+<div id="location-actions">
+
+    <button
+        id="talk-nearby-button"
+        onclick="showNearbyCharacters()"
+    >
+        👥 People Nearby
+    </button>
+
+
+    <button
+        id="explore-button-2"
+        onclick="campusAction()"
+    >
+        🔎 Explore
+    </button>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- NOTIFICATION AREA                -->
+<!-- ================================= -->
+
+<div id="notification-area">
+
+    <button
+        id="notification-button"
+        onclick="toggleNotifications()"
+    >
+
+        🔔
+
+        <span
+            id="notification-count"
+        >
+            0
+        </span>
+
+    </button>
+
+
+    <div
+        id="notification-list"
+    >
+
+        <p>
+            No new notifications.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- PLAYER NAME DISPLAY              -->
+<!-- ================================= -->
+
+<div id="player-info">
+
+    <span>
+        Student
+    </span>
+
+    <strong id="player-name-display">
+        Player
+    </strong>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- ACTION RESULT AREA               -->
+<!-- ================================= -->
+
+<div id="action-result">
+
+    <div id="action-result-icon">
+        💭
+    </div>
+
+
+    <p id="action-result-text">
+        What will you do?
+    </p>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- LOADING SCREEN                   -->
+<!-- ================================= -->
+
+<div
+    id="loading-screen"
+    class="overlay"
+>
+
+    <div class="loading-content">
+
+        <div class="loading-icon">
+            🏫
+        </div>
+
+
+        <h1>
+            Alashia Academy
+        </h1>
+
+
+        <p>
+            Preparing your first day...
+        </p>
+
+
+        <div
+            id="loading-bar-container"
+        >
+
+            <div
+                id="loading-bar"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- WELCOME SCREEN                   -->
+<!-- ================================= -->
+
+<div
+    id="welcome-screen"
+    class="overlay"
+>
+
+    <div class="welcome-content">
+
+        <div class="welcome-icon">
+            🏫
+        </div>
+
+
+        <h1>
+            Welcome to Alashia Academy
+        </h1>
+
+
+        <p>
+            Your story is about to begin.
+        </p>
+
+
+        <button
+            id="begin-game-button"
+            onclick="beginGame()"
+        >
+            Begin
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- DEBUG PANEL                      -->
+<!-- ================================= -->
+
+<section
+    id="debug-panel"
+    class="game-panel"
+>
+
+    <div class="panel-header">
+
+        <h2>
+            🛠️ Debug
+        </h2>
+
+
+        <button
+            class="panel-close"
+            onclick="closeAllPanels()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="debug-controls">
+
+        <button
+            onclick="showGameStatus()"
+        >
+            Game Status
+        </button>
+
+
+        <button
+            onclick="showCampusStatus()"
+        >
+            Campus Status
+        </button>
+
+
+        <button
+            onclick="showAllRelationships()"
+        >
+            Relationships
+        </button>
+
+
+        <button
+            onclick="showInventory()"
+        >
+            Inventory
+        </button>
+
+
+        <button
+            onclick="showJournal()"
+        >
+            Journal
+        </button>
+
+
+        <button
+            onclick="showPhone()"
+        >
+            Phone
+        </button>
+
+    </div>
+
+
+    <div id="debug-output">
+
+        <pre id="debug-text">
+Debug information will appear here.
+        </pre>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- GAME NOTIFICATION SOUND TARGET    -->
+<!-- ================================= -->
+
+<audio
+    id="notification-sound"
+    preload="auto"
+>
+</audio>
+
+
+
+<!-- ================================= -->
+<!-- FINAL GAME OVERLAY                -->
+<!-- ================================= -->
+
+<div
+    id="global-overlay"
+    class="overlay"
+>
+
+    <div id="global-overlay-content">
+
+        <h2 id="global-overlay-title">
+            Alashia Academy
+        </h2>
+
+
+        <p id="global-overlay-message">
+            ...
+        </p>
+
+
+        <button
+            id="global-overlay-button"
+            onclick="closeGlobalOverlay()"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================================= -->
+<!-- END OF ALASHIA ACADEMY GAME      -->
+<!-- ================================= -->
+        
+        
+    </div>
+
 
 </body>
 
