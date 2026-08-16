@@ -2547,3 +2547,6 @@ function showCampusStatus() {
 // ==========================================
 // END OF PART 5
 // ==========================================
+console.log("🔥 ALASHIA JS LOADED 🔥");
+alert("ALASHIA JAVASCRIPT IS RUNNING!");
+
